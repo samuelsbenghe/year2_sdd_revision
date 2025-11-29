@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Software Dev & Design Study Hub</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<style>
+			/* Custom scrollbar for a cleaner look */
+			::-webkit-scrollbar {
+				width: 8px;
+			}
+			::-webkit-scrollbar-track {
+				background: #f1f5f9;
+			}
+			::-webkit-scrollbar-thumb {
+				background: #cbd5e1;
+				border-radius: 4px;
+			}
+			::-webkit-scrollbar-thumb:hover {
+				background: #94a3b8;
+			}
+		</style>
+	</head>
+	<body class="overflow-hidden bg-slate-50 font-sans text-slate-800 antialiased">
+		<div class="flex h-screen w-full">
+			<aside class="hidden w-64 flex-shrink-0 flex-col border-r border-slate-800 bg-slate-900 text-slate-300 md:flex">
+				<div class="flex h-16 items-center border-b border-slate-800 px-6 font-bold tracking-wider text-white">DEV STUDY HUB</div>
+
+				<nav class="flex-1 space-y-1 overflow-y-auto px-3 py-6">
+					<p class="mb-2 mt-2 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Main Menu</p>
+
+					<details class="group" open>
+						<summary class="flex cursor-pointer list-none items-center rounded-md bg-slate-800 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-slate-800 focus:outline-none">
+							<svg class="mr-3 h-6 w-6 flex-shrink-0 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+								/>
+							</svg>
+							<span class="flex-1">Lectures</span>
+
+							<svg class="ml-2 h-4 w-4 transform text-slate-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+							</svg>
+						</summary>
+
+						<div class="mt-1 space-y-1 pl-11">
+							<a href="#" class="block rounded-md border-l-2 border-indigo-500 bg-indigo-900/50 px-3 py-2 text-sm font-medium text-white"> Week 1: SDLC </a>
+							<a href="#" class="block rounded-md border-l-2 border-transparent px-3 py-2 text-sm font-medium text-slate-400 transition-colors hover:bg-slate-800 hover:text-white">
+								Week 2: Algorithms
+							</a>
+							<a href="#" class="block rounded-md border-l-2 border-transparent px-3 py-2 text-sm font-medium text-slate-400 transition-colors hover:bg-slate-800 hover:text-white">
+								Week 3: Data Structures
+							</a>
+							<a href="#" class="block rounded-md border-l-2 border-transparent px-3 py-2 text-sm font-medium text-slate-400 transition-colors hover:bg-slate-800 hover:text-white">
+								Week 4: UX/UI Design
+							</a>
+						</div>
+					</details>
+
+					<a href="#" class="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-slate-800 hover:text-white">
+						<svg class="mr-3 h-6 w-6 flex-shrink-0 text-slate-400 group-hover:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+							/>
+						</svg>
+						Quizzes
+					</a>
+
+					<a href="#" class="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-slate-800 hover:text-white">
+						<svg class="mr-3 h-6 w-6 flex-shrink-0 text-slate-400 group-hover:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+							/>
+						</svg>
+						Topics
+					</a>
+
+					<a href="#" class="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-slate-800 hover:text-white">
+						<svg class="mr-3 h-6 w-6 flex-shrink-0 text-slate-400 group-hover:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+							/>
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+						</svg>
+						Tools
+					</a>
+				</nav>
+
+				<div class="border-t border-slate-800 p-4">
+					<div class="flex items-center">
+						<div class="ml-3">
+							<p class="text-sm font-medium text-white">Work in Progress</p>
+							<p class="text-xs font-medium text-slate-500">Last Updated 28/11/2025</p>
+						</div>
+					</div>
+				</div>
+			</aside>
+
+			<main class="relative flex h-screen flex-1 flex-col overflow-hidden bg-slate-50">
+				<header class="sticky top-0 z-20 border-b border-slate-200 bg-white shadow-sm">
+					<div class="flex items-center justify-between px-8 py-4">
+						<div>
+							<h1 class="text-2xl font-bold text-slate-800">Lecture 1: Software Development Life Cycle</h1>
+						</div>
+						<nav class="hidden space-x-4 text-sm font-medium text-slate-600 md:flex">
+							<a href="#overview" class="transition-colors hover:text-indigo-600">Overview</a>
+							<a href="#pdf-viewer" class="transition-colors hover:text-indigo-600">Lecture PDF</a>
+							<a href="#key-concepts" class="transition-colors hover:text-indigo-600">Key Concepts</a>
+							<a href="#resources" class="transition-colors hover:text-indigo-600">Resources</a>
+						</nav>
+					</div>
+				</header>
+
+				<div class="flex-1 overflow-y-auto p-8">
+					<div class="mx-auto max-w-4xl space-y-12 pb-20">
+						<section id="overview" class="space-y-4">
+							<h2 class="border-l-4 border-indigo-500 pl-3 text-xl font-bold text-slate-800">Overview</h2>
+							<p class="leading-relaxed text-slate-600">
+								The Software Development Life Cycle (SDLC) is a process used by the software industry to design, develop and test high quality software. The SDLC aims to produce high-quality software
+								that meets or exceeds customer expectations, reaches completion within times and cost estimates.
+							</p>
+							<div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-800">
+								<strong>Exam Tip:</strong> Remember the order of stages: Requirement Analysis, Design, Implementation, Testing, Deployment, and Maintenance.
+							</div>
+						</section>
+
+						<hr class="border-slate-200" />
+
+						<section id="pdf-viewer" class="space-y-4">
+							<h2 class="border-l-4 border-indigo-500 pl-3 text-xl font-bold text-slate-800">Lecture Material (PDF)</h2>
+
+							<div class="flex h-96 w-full flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-400 bg-slate-200 text-slate-500">
+								<svg class="mb-2 h-12 w-12 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+									/>
+								</svg>
+								<p class="font-medium">Embed PDF Here</p>
+								<p class="mt-1 text-xs text-slate-400">&lt;iframe src="lecture1.pdf" class="w-full h-full"&gt;&lt;/iframe&gt;</p>
+							</div>
+							<div class="flex gap-3">
+								<button class="rounded-md bg-indigo-600 px-4 py-2 text-sm text-white hover:bg-indigo-700">Download PDF</button>
+								<button class="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Open in New Tab</button>
+							</div>
+						</section>
+
+						<hr class="border-slate-200" />
+
+						<section id="key-concepts" class="space-y-4">
+							<h2 class="border-l-4 border-indigo-500 pl-3 text-xl font-bold text-slate-800">Key Concepts & Notes</h2>
+							<ul class="grid grid-cols-1 gap-4 md:grid-cols-2">
+								<li class="rounded border border-slate-200 bg-white p-4 shadow-sm">
+									<h3 class="font-bold text-indigo-600">Waterfall Model</h3>
+									<p class="mt-1 text-sm text-slate-600">Linear sequential approach. Each phase must be completed before the next begins.</p>
+								</li>
+								<li class="rounded border border-slate-200 bg-white p-4 shadow-sm">
+									<h3 class="font-bold text-indigo-600">Agile Methodology</h3>
+									<p class="mt-1 text-sm text-slate-600">Iterative approach. Focuses on customer satisfaction through continuous delivery.</p>
+								</li>
+								<li class="rounded border border-slate-200 bg-white p-4 shadow-sm">
+									<h3 class="font-bold text-indigo-600">DevOps</h3>
+									<p class="mt-1 text-sm text-slate-600">Combines development (Dev) and operations (Ops) to shorten the systems development life cycle.</p>
+								</li>
+							</ul>
+						</section>
+
+						<hr class="border-slate-200" />
+
+						<section id="resources" class="space-y-4">
+							<h2 class="border-l-4 border-indigo-500 pl-3 text-xl font-bold text-slate-800">Tools & Further Reading</h2>
+							<div class="divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white">
+								<div class="flex items-center justify-between p-4 hover:bg-slate-50">
+									<div class="flex items-center gap-3">
+										<div class="flex h-8 w-8 items-center justify-center rounded bg-green-100 text-xs font-bold text-green-600">JIRA</div>
+										<div>
+											<p class="text-sm font-medium text-slate-900">Jira Software</p>
+											<p class="text-xs text-slate-500">Project management tool for Agile.</p>
+										</div>
+									</div>
+									<a href="#" class="text-sm text-indigo-600 hover:underline">Link</a>
+								</div>
+								<div class="flex items-center justify-between p-4 hover:bg-slate-50">
+									<div class="flex items-center gap-3">
+										<div class="flex h-8 w-8 items-center justify-center rounded bg-orange-100 text-xs font-bold text-orange-600">GIT</div>
+										<div>
+											<p class="text-sm font-medium text-slate-900">Git Documentation</p>
+											<p class="text-xs text-slate-500">Version control system basics.</p>
+										</div>
+									</div>
+									<a href="#" class="text-sm text-indigo-600 hover:underline">Link</a>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>

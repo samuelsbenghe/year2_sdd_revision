@@ -1,5 +1,5 @@
 {
-	"name": "my-svelte-app",
+	"name": "sdd-revision",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
@@ -29,9 +29,9 @@
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.12.4",
 		"globals": "^16.4.0",
-		"prettier": "^3.6.2",
-		"prettier-plugin-svelte": "^3.4.0",
-		"prettier-plugin-tailwindcss": "^0.7.1",
+		"prettier": "^3.2.5",
+		"prettier-plugin-svelte": "^3.2.3",
+		"prettier-plugin-tailwindcss": "^0.5.11",
 		"svelte": "^5.41.0",
 		"svelte-check": "^4.3.3",
 		"tailwindcss": "^4.1.14",
@@ -39,5 +39,8 @@
 		"typescript-eslint": "^8.46.1",
 		"vite": "^7.1.10",
 		"wrangler": "^4.51.0"
+	},
+	"dependencies": {
+		"@lucide/svelte": "^0.555.0"
 	}
 }
