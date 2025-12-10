@@ -1,6 +1,15 @@
 <script lang="ts">
+	// Assets
 	import moodle_logo from '$lib/assets/moodle_logo.ico';
 	import pdf_logo from '$lib/assets/pdf_logo.png';
+	// Components
+	import Heading from '$lib/components/Heading.svelte';
+	import HorizontalBreak from '$lib/components/HorizontalBreak.svelte';
+	import Notice from '$lib/components/Notice.svelte';
+	import Section from '$lib/components/Section.svelte';
+	import Text from '$lib/components/Text.svelte';
+	import Page from '$lib/components/Page.svelte';
+	import PageNav from '$lib/components/PageNav.svelte';
 </script>
 
 <svelte:head>
@@ -11,38 +20,29 @@
 	<meta name="language" content="en-UK" />
 </svelte:head>
 
-<main class="relative flex h-screen flex-1 flex-col overflow-hidden bg-slate-50">
-	<header class="sticky top-0 z-20 border-b border-slate-200 bg-white shadow-sm">
-		<div class="flex items-center justify-between px-8 py-4">
-			<div>
-				<h1 class="text-2xl font-bold text-slate-800">Lecture 1: Introduction to Software Development and Design</h1>
-			</div>
-			<nav class="hidden space-x-4 text-sm font-medium text-slate-600 md:flex">
-				<a href="#overview" class="transition-colors hover:text-indigo-600">Overview</a>
-				<a href="#pdf-viewer" class="transition-colors hover:text-indigo-600">Lecture PDF</a>
-				<a href="#key-concepts" class="transition-colors hover:text-indigo-600">Key Concepts</a>
-				<a href="#resources" class="transition-colors hover:text-indigo-600">Resources</a>
-			</nav>
-		</div>
-	</header>
+<Page>
+	<PageNav title="Lecture 1: Introduction to Software Development and Design">
+		<a href="#overview" class="transition-colors hover:text-indigo-600">Overview</a>
+		<a href="#pdf-viewer" class="transition-colors hover:text-indigo-600">Lecture PDF</a>
+		<a href="#key-concepts" class="transition-colors hover:text-indigo-600">Key Concepts</a>
+		<a href="#resources" class="transition-colors hover:text-indigo-600">Resources</a>
+	</PageNav>
 
 	<div class="flex-1 overflow-y-auto p-8">
 		<div class="mx-auto max-w-4xl space-y-12 pb-20">
-			<section id="overview" class="space-y-4">
-				<h2 class="border-l-4 border-indigo-500 pl-3 text-xl font-bold text-slate-800">Overview</h2>
-				<p class="leading-relaxed text-slate-600">
+			<Section id="overview">
+				<Heading>Overview</Heading>
+				<Text>
 					This lecture introduces the fundamentals of Software Development and Design, covering the Coupling, Cohesion, DRY principles, SOLID principles, and various design patterns. Understanding
 					these concepts is crucial for creating maintainable and efficient software systems.
-				</p>
-				<div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-800">
-					<strong>Exam Tip:</strong> Focus on understanding the principles of Coupling and Cohesion, as well as the DRY principle.
-				</div>
-			</section>
+				</Text>
+				<Notice type="info" lead="Exam Tip" message="Focus on understanding the principles of Coupling and Cohesion, as well as the DRY principle." />
+			</Section>
 
-			<hr class="border-slate-200" />
+			<HorizontalBreak />
 
-			<section id="pdf-viewer" class="space-y-4">
-				<h2 class="border-l-4 border-indigo-500 pl-3 text-xl font-bold text-slate-800">Lecture Material (PDF)</h2>
+			<Section id="pdf-viewer">
+				<Heading>Lecture Material (PDF)</Heading>
 
 				<div class="flex h-96 w-full flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-400 bg-slate-200 text-slate-500">
 					<!-- <svg class="mb-2 h-12 w-12 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -58,12 +58,12 @@
 						>Open in New Tab</a
 					>
 				</div>
-			</section>
+			</Section>
 
 			<hr class="border-slate-200" />
 
-			<section id="key-concepts" class="space-y-4">
-				<h2 class="border-l-4 border-indigo-500 pl-3 text-xl font-bold text-slate-800">Key Concepts & Notes</h2>
+			<Section id="key-concepts">
+				<Heading>Key Concepts & Notes</Heading>
 				<ul class="grid grid-cols-1 gap-4 md:grid-cols-2">
 					<li class="rounded border border-slate-200 bg-white p-4 shadow-sm">
 						<h3 class="font-bold text-indigo-600">Coupling</h3>
@@ -82,12 +82,12 @@
 						<p class="mt-1 text-sm text-slate-600">A set of design principles for object-oriented programming to create more maintainable software.</p>
 					</li>
 				</ul>
-			</section>
+			</Section>
 
 			<hr class="border-slate-200" />
 
-			<section id="resources" class="space-y-4">
-				<h2 class="border-l-4 border-indigo-500 pl-3 text-xl font-bold text-slate-800">Tools & Further Reading</h2>
+			<Section id="resources">
+				<Heading>Tools & Further Reading</Heading>
 				<div class="divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white">
 					<div class="flex items-center justify-between p-4 hover:bg-slate-50">
 						<div class="flex items-center gap-3">
@@ -126,7 +126,7 @@
 						<a target="_blank" href="https://dl.acm.org/doi/10.1145/3172871.3172878" class="text-sm text-indigo-600 hover:underline">Link</a>
 					</div>
 				</div>
-			</section>
+			</Section>
 		</div>
 	</div>
-</main>
+</Page>
