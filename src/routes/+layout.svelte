@@ -3,10 +3,17 @@
 	import favicon from '$lib/assets/favicon.png';
 	import { BookOpen, ClipboardCheck, Layers, LayoutGrid } from '@lucide/svelte';
 	import { page } from '$app/state';
+	import { lastUpdated } from '$lib';
 
 	let { children } = $props();
 
-	let openCategory: string = 'lectures'; // default open
+	let lecturesToggle = $state(false);
+	let manualOverride = $state(null as null | boolean);
+
+	function toggleLectures() {
+		manualOverride = !lecturesToggle;
+		lecturesToggle = !lecturesToggle;
+	}
 
 	const categories = [
 		{ href: '/lectures', label: 'Lectures', icon: BookOpen, id: 'lectures' },
@@ -17,14 +24,31 @@
 
 	const weeks = [
 		{ href: '/lectures/week1', label: 'Week 1: Introduction' },
-		{ href: '/lectures/week2', label: 'Week 2:' },
+		{ href: '/lectures/week2', label: 'Week 2: Module Coupling and Cohesion' },
 		{ href: '/lectures/week3', label: 'Week 3:' },
-		{ href: '/lectures/week4', label: 'Week 4:' }
+		{ href: '/lectures/week4', label: 'Week 4:' },
+		{ href: '/lectures/week5', label: 'Week 5:' },
+		{ href: '/lectures/week6', label: 'Week 6:' },
+		{ href: '/lectures/week7', label: 'Week 7:' },
+		{ href: '/lectures/week8', label: 'Week 8:' },
+		{ href: '/lectures/week9', label: 'Week 9:' },
+		{ href: '/lectures/week10', label: 'Week 10:' }
 	];
 
-	function toggleCategory(id: string) {
-		openCategory = openCategory === id ? '' : id;
-	}
+	$effect(() => {
+		const isLectureWeek = weeks.some((w) => page.url.pathname.startsWith(w.href));
+
+		if (isLectureWeek) {
+			if (manualOverride === null) {
+				lecturesToggle = true;
+			} else {
+				lecturesToggle = manualOverride;
+			}
+		} else {
+			lecturesToggle = false;
+			manualOverride = null;
+		}
+	});
 </script>
 
 <svelte:head>
@@ -39,11 +63,13 @@
 			<p class="mb-2 mt-2 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Main Menu</p>
 
 			<!-- Lectures -->
-			<details class="group" open={openCategory === 'lectures'}>
+			<details class="group" open={lecturesToggle}>
 				<summary
-					onclick={() => toggleCategory('lectures')}
-					class={`flex cursor-pointer list-none items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors
-		${page.url.pathname.startsWith('/lectures') ? 'bg-slate-800 text-white' : 'bg-transparent text-slate-300 hover:bg-slate-800 hover:text-white'}`}
+					onclick={(e) => {
+						e.preventDefault(); // stop native <details> toggle
+						toggleLectures();
+					}}
+					class={`${page.url.pathname.startsWith('/lectures') ? 'bg-slate-800 text-white' : 'bg-transparent hover:text-white'} flex cursor-pointer list-none items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-slate-800`}
 				>
 					<BookOpen class={page.url.pathname.startsWith('/lectures') ? 'text-indigo-400' : 'text-slate-400'} />
 					<span class="flex-1">Lectures</span>
@@ -53,7 +79,7 @@
 					</svg>
 				</summary>
 
-				<div class="mt-1 space-y-1 pl-11">
+				<div class="mt-1 space-y-1 pl-4">
 					{#each weeks as week}
 						<a
 							href={week.href}
@@ -71,11 +97,10 @@
 			{#each categories.slice(1) as cat}
 				<a
 					href={cat.href}
-					onclick={() => toggleCategory(cat.id)}
 					class={`group flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors
 			${page.url.pathname.startsWith(cat.href) ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'}`}
 				>
-					<svelte:component this={cat.icon} class="mr-3 h-6 w-6 shrink-0 text-slate-400 group-hover:text-indigo-400" />
+					<cat.icon class="mr-3 h-6 w-6 shrink-0 text-slate-400 group-hover:text-indigo-400" />
 					{cat.label}
 				</a>
 			{/each}
@@ -85,7 +110,7 @@
 			<div class="flex items-center">
 				<div class="ml-3">
 					<p class="text-sm font-medium text-white">Work in Progress</p>
-					<p class="text-xs font-medium text-slate-500">Last Updated 28/11/2025</p>
+					<p class="text-xs font-medium text-slate-500">Last Updated: {lastUpdated.toLocaleDateString()}</p>
 				</div>
 			</div>
 		</div>

@@ -33,6 +33,12 @@ To create a production version of your app:
 npm run build
 ```
 
+## Checking Lines of Code
+
+```sh
+cloc . --include-ext=js,ts,svelte,css,html --exclude-dir=node_modules,.git,.svelte-kit,build,.vscode,.wrangler --exclude-content='worker-configuration\.d\.ts'
+```
+
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
