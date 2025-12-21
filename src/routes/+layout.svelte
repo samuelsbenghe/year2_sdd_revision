@@ -1,9 +1,10 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.png';
-	import { BookOpen, ClipboardCheck, Layers, LayoutGrid } from '@lucide/svelte';
+	import { BookOpen, ClipboardCheck, Layers, LayoutGrid, HomeIcon } from '@lucide/svelte';
 	import { page } from '$app/state';
 	import { lastUpdated } from '$lib';
+	import { goto } from '$app/navigation';
 
 	let { children } = $props();
 
@@ -13,6 +14,10 @@
 	function toggleLectures() {
 		manualOverride = !lecturesToggle;
 		lecturesToggle = !lecturesToggle;
+		// navigate to lectures if not already there
+		if (manualOverride && !page.url.pathname.startsWith('/lectures')) {
+			goto('/lectures');
+		}
 	}
 
 	const categories = [
@@ -36,7 +41,7 @@
 	];
 
 	$effect(() => {
-		const isLectureWeek = weeks.some((w) => page.url.pathname.startsWith(w.href));
+		const isLectureWeek = weeks.some((w) => page.url.pathname.startsWith(w.href)) || page.url.pathname === '/lectures';
 
 		if (isLectureWeek) {
 			if (manualOverride === null) {
@@ -60,6 +65,15 @@
 		<div class="flex h-16 items-center border-b border-slate-800 px-6 font-bold tracking-wider text-white">Samuel's SDD Revision</div>
 
 		<nav class="flex-1 space-y-1 overflow-y-auto px-3 py-6">
+			<!-- Homepage -->
+			<a
+				href="/"
+				class={`group flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors
+			${page.url.pathname === '/' ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'}`}
+			>
+				<HomeIcon class="mr-3 h-6 w-6 shrink-0 text-slate-400 group-hover:text-indigo-400" />
+				<span>Home</span>
+			</a>
 			<p class="mb-2 mt-2 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Main Menu</p>
 
 			<!-- Lectures -->

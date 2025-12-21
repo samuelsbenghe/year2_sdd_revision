@@ -19,9 +19,9 @@
 </script>
 
 <svelte:head>
-	<title>Lecture 3: Acceptance Testing in Agile</title>
-	<meta name="description" content="Lecture 3 explores Acceptance Testing in Agile, covering ATDD, Three Amigos, Selenium automation, and testing tools for web applications." />
-	<meta name="keywords" content="Acceptance Testing, Agile, ATDD, Three Amigos, Selenium, W3C Validator, Lighthouse, CI/CD, Testing Tools, Lecture 3" />
+	<title>Lecture 4: Acceptance Testing in Agile</title>
+	<meta name="description" content="Lecture 4 explores Acceptance Testing in Agile, covering ATDD, Three Amigos, Selenium automation, and testing tools for web applications." />
+	<meta name="keywords" content="Acceptance Testing, Agile, ATDD, Three Amigos, Selenium, W3C Validator, Lighthouse, CI/CD, Testing Tools, Lecture 4" />
 	<meta name="author" content="Samuel" />
 	<meta name="language" content="en-UK" />
 </svelte:head>
