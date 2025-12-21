@@ -50,7 +50,11 @@
 <div class="relative rounded-lg border border-slate-200 bg-slate-900 shadow-sm">
 	<div class="flex items-center justify-between border-b border-slate-700 px-4 py-2">
 		<span class="text-xs font-medium uppercase tracking-wider text-slate-400">{language}</span>
-		<button onclick={copyToClipboard} disabled={loading || !!error} class="flex items-center gap-1 rounded px-2 py-1 text-xs text-slate-400 transition-colors hover:bg-slate-800 hover:text-white disabled:cursor-not-allowed disabled:opacity-50">
+		<button
+			onclick={copyToClipboard}
+			disabled={loading || !!error}
+			class="flex items-center gap-1 rounded px-2 py-1 text-xs text-slate-400 transition-colors hover:bg-slate-800 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+		>
 			{#if copied}
 				<Check class="h-4 w-4 text-green-400" />
 				<span class="text-green-400">Copied!</span>
@@ -60,5 +64,7 @@
 			{/if}
 		</button>
 	</div>
-	<pre class="overflow-x-auto p-4 text-sm leading-relaxed text-slate-300"><code>{#if loading}<Loader2 class="h-5 w-5 animate-spin text-slate-400" />{:else if error}<span class="text-red-400">{error}</span>{:else}{displayCode}{/if}</code></pre>
+	<pre class="overflow-x-auto p-4 text-sm leading-relaxed text-slate-300"><code
+			>{#if loading}<Loader2 class="h-5 w-5 animate-spin text-slate-400" />{:else if error}<span class="text-red-400">{error}</span>{:else}{displayCode}{/if}</code
+		></pre>
 </div>
