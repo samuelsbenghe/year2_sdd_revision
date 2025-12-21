@@ -26,7 +26,7 @@
 		{ href: '/lectures/week1', label: 'Week 1: Introduction' },
 		{ href: '/lectures/week2', label: 'Week 2: Module Coupling and Cohesion' },
 		{ href: '/lectures/week3', label: 'Week 3: Software Testing' },
-		{ href: '/lectures/week4', label: 'Week 4:' },
+		{ href: '/lectures/week4', label: 'Week 4: Web Testing with JavaScript' },
 		{ href: '/lectures/week5', label: 'Week 5:' },
 		{ href: '/lectures/week6', label: 'Week 6:' },
 		{ href: '/lectures/week7', label: 'Week 7:' },
