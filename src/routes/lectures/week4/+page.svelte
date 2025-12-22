@@ -27,7 +27,7 @@
 </svelte:head>
 
 <Page>
-	<PageNav title="Lecture 3: Acceptance Testing in Agile">
+	<PageNav title="Lecture 4: Acceptance Testing in Agile">
 		<PageNavLink href="#overview" label="Overview" />
 		<PageNavLink href="#pdf-viewer" label="Lecture PDF" />
 		<PageNavLink href="#atdd" label="ATDD & Three Amigos" />
