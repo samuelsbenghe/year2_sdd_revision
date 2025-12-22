@@ -57,14 +57,14 @@
 
 		<Section id="lecture-viewer">
 			<Heading>Lecture Material (PDF)</Heading>
-			<PDF title="Week 3 PDF" pdf_url={StaticAssets.Week3Lecture} />
+			<PDF title="Week 3 PDF" src={StaticAssets.Week3Lecture} />
 		</Section>
 
 		<HorizontalBreak />
 
 		<Section id="unittests-viewer">
 			<Heading>Unit Testing Material (PDF)</Heading>
-			<PDF title="Week 3 Unit Tests PDF" pdf_url={StaticAssets.Week3UnitTests} />
+			<PDF title="Week 3 Unit Tests PDF" src={StaticAssets.Week3UnitTests} />
 		</Section>
 
 		<Section id="testing-types">
@@ -184,7 +184,7 @@
 		<Section id="labs">
 			<Heading>Labs & Practical Exercises</Heading>
 			<Text>Apply your knowledge of software testing through hands-on lab exercises. These labs will help you write effective tests and implement automated testing strategies.</Text>
-			<PDF title="Week 3 Lab" pdf_url={StaticAssets.Week3Lab} />
+			<PDF title="Week 3 Lab" src={StaticAssets.Week3Lab} />
 			<HorizontalList>
 				<HorizontalListItem title="Lab Answers" description="Check your solutions and compare with provided answers." link_url={StaticAssets.Week3LabAnswers} logo_url={StaticAssets.MoodleLogo} />
 			</HorizontalList>

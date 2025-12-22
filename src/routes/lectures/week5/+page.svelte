@@ -15,6 +15,7 @@
 	import PageNavLink from '$lib/components/PageNavLink.svelte';
 	// Static Variables
 	import { StaticAssets } from '$lib';
+	import PDF from '$lib/components/PDF.svelte';
 </script>
 
 <svelte:head>
@@ -48,6 +49,13 @@
 				lead="Nielsen's Law"
 				message="You only need to test with 5 users to uncover 85% of usability issues. Early usability testing before the design is finalized helps avoid costly changes later."
 			/>
+		</Section>
+
+		<HorizontalBreak />
+
+		<Section id="pdf-viewer">
+			<Heading>Lecture Material (PDF)</Heading>
+			<PDF title="Week 5 PDF" src={StaticAssets.Week5Lecture} />
 		</Section>
 
 		<HorizontalBreak />

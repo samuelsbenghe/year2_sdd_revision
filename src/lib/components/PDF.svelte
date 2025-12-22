@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { title, pdf_url }: { title: string; pdf_url: string } = $props();
+	let { title, src }: { title: string; src: string } = $props();
 </script>
 
 <div class="flex h-96 w-full flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-400 bg-slate-200 text-slate-500">
@@ -8,9 +8,9 @@
 					</svg>
 					<p class="font-medium">Embed PDF Here</p>
 					<p class="mt-1 text-xs text-slate-400">&lt;iframe src="lecture1.pdf" class="w-full h-full"&gt;&lt;/iframe&gt;</p> -->
-	<iframe {title} src={pdf_url} class="h-full w-full"></iframe>
+	<iframe {title} {src} class="h-full w-full"></iframe>
 </div>
 <div class="flex gap-3">
-	<a href={pdf_url} download class="rounded-md bg-indigo-600 px-4 py-2 text-sm text-white hover:bg-indigo-700">Download PDF</a>
-	<a href={pdf_url} target="_blank" rel="noopener noreferrer" class="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Open in New Tab</a>
+	<a href={src} download class="rounded-md bg-indigo-600 px-4 py-2 text-sm text-white hover:bg-indigo-700">Download PDF</a>
+	<a href={src} target="_blank" rel="noopener noreferrer" class="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Open in New Tab</a>
 </div>

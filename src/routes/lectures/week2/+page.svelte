@@ -61,7 +61,7 @@
 
 		<Section id="pdf-viewer">
 			<Heading>Lecture Material (PDF)</Heading>
-			<PDF title="Week 2 PDF" pdf_url={lectureSrc} />
+			<PDF title="Week 2 PDF" src={lectureSrc} />
 		</Section>
 
 		<HorizontalBreak />
@@ -152,7 +152,7 @@
 		<Section id="labs">
 			<Heading>Labs & Practical Exercises</Heading>
 			<Text>Apply your knowledge of coupling and cohesion through hands-on lab exercises. These labs will help you identify and improve module design in real code.</Text>
-			<PDF title="Week 2 Lab" pdf_url={labSrc} />
+			<PDF title="Week 2 Lab" src={labSrc} />
 			<HorizontalList>
 				<HorizontalListItem title="Lab Answers" description="Check your solutions and compare with provided answers." link_url={labAnswersSrc} logo_url={moodleLogo} />
 			</HorizontalList>

@@ -12,6 +12,7 @@ const StaticAssets = {
 	Week3LabAnswers: '/assets/week3_lab_answers.js',
 	Week4Lecture: '/assets/week4_lecture.pdf',
 	Week4Lab: '/assets/week4_lab.pdf',
+	Week5Lecture: '/assets/week5_lecture.pdf',
 	// Images
 	MoodleLogo: '/assets/logos/moodle.ico',
 	PDFLogo: '/assets/logos/pdf.png',

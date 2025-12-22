@@ -55,7 +55,7 @@
 
 		<Section id="pdf-viewer">
 			<Heading>Lecture Material (PDF)</Heading>
-			<PDF title="Week 1 PDF" pdf_url={lectureSrc} />
+			<PDF title="Week 1 PDF" src={lectureSrc} />
 		</Section>
 
 		<HorizontalBreak />

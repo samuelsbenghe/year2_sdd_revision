@@ -51,7 +51,7 @@
 
 		<Section id="pdf-viewer">
 			<Heading>Lecture Material (PDF)</Heading>
-			<PDF title="Week 4 PDF" pdf_url={StaticAssets.Week4Lecture} />
+			<PDF title="Week 4 PDF" src={StaticAssets.Week4Lecture} />
 		</Section>
 
 		<HorizontalBreak />
@@ -163,7 +163,7 @@
 		<Section id="labs">
 			<Heading>Labs & Practical Exercises</Heading>
 			<Text>Work through hands-on activities building a grade submission system with validation, manual testing workflows, DOM manipulation exercises, and optional Selenium automation.</Text>
-			<PDF title="Week 4 Lab" pdf_url={StaticAssets.Week4Lab} />
+			<PDF title="Week 4 Lab" src={StaticAssets.Week4Lab} />
 			<GridList>
 				<GridListItem
 					title="Activity 1: Simple HTML Setup"
