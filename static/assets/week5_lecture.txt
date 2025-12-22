@@ -1,0 +1,185 @@
+Introduction to User Testing
+• User testing is a crucial process where actual users interact with a system or product to identify usability issues and pain points.
+
+Importance of Early Usability
+Testing
+• Early CHI work stressed the value of usability testing before the design is finalized. It helps avoid costly changes later.
+
+Nielsen's Law of User Experience
+• Jakob Nielsen advocated for testing with small groups. 'You only need to test with 5 users to uncover 85% of usability issues.'
+
+
+Iterative Testing
+• Donald Norman stressed the need for iterative testing, with regular user feedback loops to refine products based on real-world interactions.
+
+
+
+
+Shneiderman's Eight Golden Rules
+• Ben Shneiderman developed 8 design principles, which include 'Strive for consistency' and 'Seek universal usability.'
+
+
+
+
+
+Thinking Aloud Protocol
+• Nielsen popularized the 'think aloud' method where users verbalize their thoughts while using the system to identify usability challenges.
+
+Thinking Aloud Protocol
+
+
+Donald Norman's Concept of
+Affordances
+• Affordances refer to the perceived properties of an object that suggest how it should be used. Testing ensures that these are clear to users.
+
+
+Task-Based User Testing
+• CHI pioneers emphasized testing based on real-world tasks that users would perform, to simulate actual usage scenarios.
+
+
+
+
+
+
+Reducing Cognitive Load
+• Shneiderman and others emphasized reducing cognitive load in interfaces through testing, ensuring users are not overwhelmed by complexity.
+
+
+
+Nielsen's Heuristic Evaluation
+• Jakob Nielsen proposed 10 usability heuristics that could be used alongside user testing to identify design flaws.
+
+
+The Role of Feedback in Interfaces
+• Don Norman stressed the importance of giving clear, immediate feedback to users, which user testing can help refine.
+
+Consistency in User Interfaces
+• Shneiderman's work highlighted the importance of consistency across interface elements, which user testing can help validate.
+
+
+
+
+
+
+Error Prevention
+• Testing can identify areas where users are prone to making errors. Early CHI literature highlights the importance of preventing errors through design.
+
+https://www.nngroup.com/videos/slips-vs- mistakes/
+
+A/B Testing
+• A/B testing is a form of user testing where two versions of a design are compared to see which performs better with real users.
+
+
+
+
+
+
+
+The User's Mental Model
+• Don Norman's work showed that users build mental models of how systems should work. Testing helps ensure that the design aligns with those models.
+
+
+Usability Metrics
+• Early CHI research emphasized the importance of measuring usability with metrics like task completion rate and time-on-task.
+
+Shneiderman's Direct Manipulation
+Interfaces
+
+• Shneiderman advocated for direct manipulation interfaces, which allow users to interact with objects on the screen directly. Testing ensures ease of use.
+
+The Cost of Poor Usability
+• Jakob Nielsen's studies showed that the cost of fixing a usability issue post-launch can be up to 100 times more than if it were caught during testing.
+
+
+Simplicity vs. Complexity
+• Norman's work argued that while simplicity is desirable, it's more important to design interfaces that are understandable, which is validated through testing.
+• He has a great book on this topic - Living with Complexity.
+
+Usability Testing in Agile
+• Agile methodologies encourage frequent iterations, and user testing is key to ensuring each version of the product is moving towards better usability.
+
+Remote User Testing
+• With the advent of remote tools, user testing can now be conducted anywhere, providing a broader and more diverse set of feedback.
+
+The Role of User Personas
+• Creating user personas can guide user testing by representing real-world user groups and ensuring that their needs are met.
+
+Cultural Considerations in Testing
+• Testing with users from different cultural backgrounds can reveal usability issues that might not be apparent with a homogenous testing group.
+
+The Importance of Real-World
+Contexts
+• Testing in real-world environments can uncover usability issues that controlled lab testing might miss.
+
+Early CHI and Usability Engineering
+• CHI pioneers like Nielsen and Norman laid the foundation for modern usability engineering practices through rigorous user testing.
+• This is empirical, largely quantitative and what we call a 'discount' technique.
+
+Field Studies in CHI
+• Field studies allow researchers to observe users in their natural environments, providing insights into usability challenges that structured lab testing may miss.
+
+User Experience vs. Usability
+• While usability focuses on how easy a product is to use, early CHI literature also highlights the importance of overall user experience.
+
+Identifying Pain Points
+• Through user testing, pain points or areas where users struggle are identified and addressed before the product goes to market.
+• You will have to mix and match to get good value.
+
+Prototyping and Testing
+• Prototypes allow designers to test concepts before full development. Early CHI pioneers advocated for testing as early as possible.
+
+The Role of Surveys in Testing
+• In addition to observing behavior, surveys can provide direct user feedback on specific aspects of the interface.
+
+The Concept of Learnability
+• Nielsen stressed the importance of learnability-how quickly a user can become proficient in using a new system.
+• Also memorability, in coming back to the system and 'remembering' how to use it.
+
+Paper Prototyping
+• Before digital tools, early CHI researchers often used paper prototypes for testing designs cheaply and effectively.
+• They are still useful! Bill Buxton has a book on the topic.
+
+The Role of Accessibility
+• User testing is crucial for identifying accessibility issues and ensuring that products are usable by people with varying abilities.
+
+Testing for Error Recovery
+• User testing helps ensure that when users make errors, the system provides them with clear, easy-to-follow recovery options.
+
+Testing Mobile Usability
+• Mobile devices introduced new usability challenges, and CHI researchers were among the first to highlight the importance of mobile user testing.
+• My PhD supervisor Professor Steve Love wrote some books on this topic.
+
+The Importance of Documentation
+• User testing can also highlight gaps in user documentation, helping to improve onboarding and learning materials.
+• We can mix and match with TDD to get value.
+
+Cognitive Walkthroughs
+• A cognitive walkthrough involves stepping through the interface as a user would, predicting usability challenges before testing.
+
+Multimodal Interfaces
+• CHI research also explored the usability of multimodal interfaces, where users interact via touch, voice, and other inputs.
+• Lots of mathematical models such as Fitts' Law provide empirical evidence to support these mechanisms being loosely similar and quantifiable.
+
+Performance Metrics
+• Through user testing, performance metrics like task efficiency and error rates can be measured to evaluate the design's effectiveness.
+
+Testing for Satisfaction
+• User testing should not only focus on efficiency but also on whether the user enjoys the interaction and finds it satisfying.
+
+Visual Hierarchy in UI
+• Testing helps determine whether the visual hierarchy of a design is clear, guiding users through tasks efficiently.
+
+Simplicity in Interaction Design
+• Shneiderman emphasized the importance of keeping interactions simple, which user testing can validate.
+• Essentially one click is better than four!
+
+Test Early, Test Often
+• One of Jakob Nielsen's principles is to test early and test often. User feedback is critical at all stages of design.
+
+Heuristic Evaluations vs. User
+Testing
+• Nielsen recommended using both heuristic evaluations and user testing for comprehensive usability insights.
+
+Testing with Diverse User Groups
+• Early CHI work emphasized the importance of testing with a wide range of users to ensure the system is usable by as many people as possible.
+
