@@ -33,7 +33,7 @@
 		{ href: '/lectures/week3', label: 'Week 3: Software Testing' },
 		{ href: '/lectures/week4', label: 'Week 4: Web Testing with JavaScript' },
 		{ href: '/lectures/week5', label: 'Week 5: User Testing' },
-		{ href: '/lectures/week6', label: 'Week 6:' },
+		{ href: '/lectures/week6', label: 'Week 6: Version Control Systems' },
 		{ href: '/lectures/week7', label: 'Week 7:' },
 		{ href: '/lectures/week8', label: 'Week 8:' },
 		{ href: '/lectures/week9', label: 'Week 9:' },

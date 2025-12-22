@@ -13,6 +13,9 @@ const StaticAssets = {
 	Week4Lecture: '/assets/week4_lecture.pdf',
 	Week4Lab: '/assets/week4_lab.pdf',
 	Week5Lecture: '/assets/week5_lecture.pdf',
+	Week6Lecture: '/assets/week6_lecture.pdf',
+	Week6Lab: '/assets/week6_lab.pdf',
+	Week6CICD: '/assets/week6_cicd.pdf',
 	// Images
 	MoodleLogo: '/assets/logos/moodle.ico',
 	PDFLogo: '/assets/logos/pdf.png',

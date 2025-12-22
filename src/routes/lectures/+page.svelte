@@ -103,15 +103,18 @@
 					</div>
 				</a>
 
-				<div class="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-5">
-					<div class="flex items-center gap-4">
-						<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-200 text-sm font-bold text-slate-400">6</div>
-						<div>
-							<h3 class="font-semibold text-slate-400">Week 6</h3>
-							<p class="text-sm text-slate-400">Coming soon...</p>
+				<a href="/lectures/week6" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-indigo-300 hover:shadow-md">
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-4">
+							<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-sm font-bold text-indigo-600">6</div>
+							<div>
+								<h3 class="font-semibold text-slate-800 group-hover:text-indigo-600">Version Control Systems</h3>
+								<p class="text-sm text-slate-500">Git Basics, Branching, Merging, Collaboration, DVCS</p>
+							</div>
 						</div>
+						<ArrowRight class="h-5 w-5 text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-indigo-600" />
 					</div>
-				</div>
+				</a>
 
 				<div class="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-5">
 					<div class="flex items-center gap-4">

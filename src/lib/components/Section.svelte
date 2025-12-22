@@ -1,7 +1,11 @@
 <script lang="ts">
-	let { id, children }: { id?: string; children: any } = $props();
+	let { id, children }: { id?: string; children?: any } = $props();
 </script>
 
 <section {id} class="space-y-4">
-	{@render children()}
+	{#if children}
+		{@render children()}
+	{:else}
+		<p>Empty section.</p>
+	{/if}
 </section>
