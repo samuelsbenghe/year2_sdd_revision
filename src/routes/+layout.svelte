@@ -34,10 +34,10 @@
 		{ href: '/lectures/week4', label: 'Week 4: Web Testing with JavaScript' },
 		{ href: '/lectures/week5', label: 'Week 5: User Testing' },
 		{ href: '/lectures/week6', label: 'Week 6: Version Control Systems' },
-		{ href: '/lectures/week7', label: 'Week 7:' },
-		{ href: '/lectures/week8', label: 'Week 8:' },
-		{ href: '/lectures/week9', label: 'Week 9:' },
-		{ href: '/lectures/week10', label: 'Week 10:' }
+		{ href: '/lectures/week7', label: 'Week 7: Robust and Secure Programming' },
+		{ href: '/lectures/week8', label: 'Week 8: Usability Testing' },
+		{ href: '/lectures/week9', label: 'Week 9: Comprehensive Revision' },
+		{ href: '/lectures/week10', label: 'Week 10: Final Lecture & Exam Prep' }
 	];
 
 	$effect(() => {

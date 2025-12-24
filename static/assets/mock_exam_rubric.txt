@@ -1,0 +1,231 @@
+Sheet1
+
+Criteria
+
+Excellent (8-10 marks)
+
+Good (5-7 marks)
+
+Clearly and accurately defines
+module coupling and cohesion.
+(a)
+Explanation of Provides clear and relevant
+Coupling and examples of high/low coupling
+Cohesion
+and high/low cohesion.
+Provides a comprehensive
+discussion of the benefits,
+(b) Benefits of including improved
+High
+maintainability, reusability,
+Cohesion and testability, and reduced
+Low Coupling complexity.
+Identifies three relevant modules
+for an online store and provides a
+(c) Online
+clear and logical explanation of
+Store System how to achieve low coupling and
+high cohesion between them.
+Design
+
+Defines module coupling and
+cohesion with minor inaccuracies.
+Provides examples with some
+relevance to high/low coupling
+and high/low cohesion.
+Discusses some benefits of high
+cohesion and low coupling, but
+the explanation may lack depth or
+clarity.
+Identifies three modules, but the
+explanation of how to achieve low
+coupling and high cohesion may
+be incomplete or lack clarity.
+
+Criteria
+
+Excellent (8-10 marks)
+Good (5-7 marks)
+Clearly explains the importance of Explains the importance of
+(a) Importance defensive coding in preventing
+defensive coding with some
+and
+errors and improving software
+clarity. Provides some relevant
+Techniques of robustness. Provides three
+examples of defensive coding
+Defensive
+relevant and accurate examples of techniques, but may lack detail or
+Coding
+defensive coding techniques (e.g., accuracy.
+Provides a comprehensive
+description of the different stages Describes some stages of user
+involved in user testing (e.g.,
+testing, but the explanation may
+(b) Stages and planning, recruitment, execution, lack detail or clarity. Explains
+Benefits of
+analysis). Clearly explains how
+how user testing can improve
+User Testing user testing results can improve design with some limitations.
+
+Page 1
+
+Sheet1
+Writes a function with clear and
+(c) Defensive effective defensive coding
+Coding
+techniques to handle invalid
+Implementatio inputs. The code is correct,
+n
+efficient, and well-structured.
+
+Writes a function that
+incorporates some defensive
+coding techniques, but may miss
+some potential invalid input
+scenarios or have minor errors.
+
+Criteria
+
+Excellent (8-10 marks)
+Good (5-7 marks)
+Clearly explains the benefits of
+using version control systems
+Explains some benefits of version
+(a) Benefits
+(e.g., collaboration, tracking
+control, but the explanation may
+and Concepts changes, rollback). Provides a
+lack detail or clarity. Describes
+of Version
+clear and accurate description of branching, merging, and
+branching, merging, and
+committing with some limitations.
+Control
+Provides a comprehensive outline
+of the TDD process (Red-Green(b) Process
+Outlines the TDD process with
+Refactor). Clearly discusses the
+and
+some clarity. Discusses some
+advantages of using TDD (e.g.,
+Advantages of reduced bugs, improved design, advantages of TDD, but the
+increased confidence).
+explanation may lack depth.
+TDD
+Clearly describes the steps
+involved in developing the email
+(c) TDD
+validation function using TDD.
+Describes the TDD steps with
+Implementatio Provides clear and relevant
+some clarity. Provides some
+n for Email
+examples of tests (e.g., valid
+examples of tests and code, but
+email format, invalid email
+may lack detail or accuracy.
+Validation
+
+Page 2
+
+Sheet1
+
+Satisfactory (3-4 marks)
+
+Needs Improvement (1-2 marks)
+
+Definitions of module coupling
+Fails to define module coupling
+and cohesion lack clarity or
+and cohesion or provides
+accuracy. Examples are vague or inaccurate definitions. Examples
+not clearly linked to the concepts. are missing or irrelevant.
+Mentions a few benefits of high
+cohesion and low coupling, but
+the discussion is superficial or
+incomplete.
+
+Fails to discuss the benefits of
+high cohesion and low coupling
+or provides irrelevant information.
+
+Identifies modules with limited
+relevance to an online store.
+Struggles to explain how to
+achieve low coupling and high
+cohesion.
+
+Fails to identify relevant modules
+or provides a vague and
+inadequate explanation of low
+coupling and high cohesion.
+
+Satisfactory (3-4 marks)
+
+Needs Improvement (1-2 marks)
+
+Provides a basic explanation of
+the importance of defensive
+coding. Examples of defensive
+coding techniques are vague or
+incomplete.
+
+Fails to explain the importance of
+defensive coding or provides
+irrelevant information. Examples
+are missing or inaccurate.
+
+Provides a basic overview of user Fails to describe the stages of user
+testing stages. The connection
+testing or provides inaccurate
+between user testing results and information. Does not explain
+design improvements is weak.
+how user testing improves design.
+
+Page 3
+
+Sheet1
+Writes a function with limited
+defensive coding techniques. The Fails to write a function or the
+code may contain errors or
+code lacks any defensive coding
+inefficiencies.
+measures.
+
+Satisfactory (3-4 marks)
+
+Needs Improvement (1-2 marks)
+
+Provides a basic explanation of
+version control and its benefits.
+Definitions of branching,
+merging, and committing are
+vague or incomplete.
+
+Fails to explain the benefits of
+version control or provides
+inaccurate information. Struggles
+to describe branching, merging,
+and committing.
+
+Provides a basic overview of the
+TDD process. The discussion of
+advantages is superficial or
+incomplete.
+
+Fails to outline the TDD process
+or provides inaccurate
+information. Does not discuss the
+advantages of TDD.
+
+Provides a basic description of the Fails to describe the TDD steps or
+TDD steps for email validation. provides inaccurate information.
+Examples of tests and code are
+Examples are missing or
+vague or incomplete.
+irrelevant.
+
+Page 4
+
+

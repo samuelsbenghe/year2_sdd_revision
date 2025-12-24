@@ -116,45 +116,57 @@
 					</div>
 				</a>
 
-				<div class="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-5">
-					<div class="flex items-center gap-4">
-						<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-200 text-sm font-bold text-slate-400">7</div>
-						<div>
-							<h3 class="font-semibold text-slate-400">Week 7</h3>
-							<p class="text-sm text-slate-400">Coming soon...</p>
+				<a href="/lectures/week7" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-indigo-300 hover:shadow-md">
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-4">
+							<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-sm font-bold text-indigo-600">7</div>
+							<div>
+								<h3 class="font-semibold text-slate-800 group-hover:text-indigo-600">Robust and Secure Programming</h3>
+								<p class="text-sm text-slate-500">Input Validation, Memory Management, Authentication, Encryption, Concurrency</p>
+							</div>
 						</div>
+						<ArrowRight class="h-5 w-5 text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-indigo-600" />
 					</div>
-				</div>
+				</a>
 
-				<div class="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-5">
-					<div class="flex items-center gap-4">
-						<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-200 text-sm font-bold text-slate-400">8</div>
-						<div>
-							<h3 class="font-semibold text-slate-400">Week 8</h3>
-							<p class="text-sm text-slate-400">Coming soon...</p>
+				<a href="/lectures/week8" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-indigo-300 hover:shadow-md">
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-4">
+							<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-sm font-bold text-indigo-600">8</div>
+							<div>
+								<h3 class="font-semibold text-slate-800 group-hover:text-indigo-600">Usability Testing</h3>
+								<p class="text-sm text-slate-500">Heuristic Evaluation, Think-Aloud, SUS, A/B Testing, User Metrics</p>
+							</div>
 						</div>
+						<ArrowRight class="h-5 w-5 text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-indigo-600" />
 					</div>
-				</div>
+				</a>
 
-				<div class="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-5">
-					<div class="flex items-center gap-4">
-						<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-200 text-sm font-bold text-slate-400">9</div>
-						<div>
-							<h3 class="font-semibold text-slate-400">Week 9</h3>
-							<p class="text-sm text-slate-400">Coming soon...</p>
+				<a href="/lectures/week9" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-indigo-300 hover:shadow-md">
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-4">
+							<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-sm font-bold text-indigo-600">9</div>
+							<div>
+								<h3 class="font-semibold text-slate-800 group-hover:text-indigo-600">Comprehensive Revision</h3>
+								<p class="text-sm text-slate-500">SOLID Principles, DRY, Anti-Patterns, Refactoring, Unix, Code Quality</p>
+							</div>
 						</div>
+						<ArrowRight class="h-5 w-5 text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-indigo-600" />
 					</div>
-				</div>
+				</a>
 
-				<div class="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-5">
-					<div class="flex items-center gap-4">
-						<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-200 text-sm font-bold text-slate-400">10</div>
-						<div>
-							<h3 class="font-semibold text-slate-400">Week 10</h3>
-							<p class="text-sm text-slate-400">Coming soon...</p>
+				<a href="/lectures/week10" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-indigo-300 hover:shadow-md">
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-4">
+							<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-sm font-bold text-indigo-600">10</div>
+							<div>
+								<h3 class="font-semibold text-slate-800 group-hover:text-indigo-600">Final Lecture & Exam Prep</h3>
+								<p class="text-sm text-slate-500">Advanced Tools, API Design, CI/CD, Profiling, Code Reviews, Mock Exam</p>
+							</div>
 						</div>
+						<ArrowRight class="h-5 w-5 text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-indigo-600" />
 					</div>
-				</div>
+				</a>
 			</div>
 		</Section>
 

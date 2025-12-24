@@ -1,0 +1,209 @@
+Introduction to Usability
+• Understanding the ease of use and
+effectiveness of a system.
+
+Importance of Usability
+• Usability impacts user satisfaction,
+productivity, and error rates.
+
+Heuristic Evaluation
+• A method to identify usability problems using
+usability principles (Nielsen, 1994).
+
+Usability Heuristics
+• Common principles: visibility, consistency,
+error prevention, and more.
+
+Cognitive Walkthroughs
+• Evaluating task flow based on user goals and
+system feedback.
+
+Steps in Cognitive Walkthrough
+• Define tasks, identify goals, analyze actions
+(Wharton et al., 1994).
+
+Think Aloud Studies
+• Users verbalize thoughts while interacting
+with a system.
+
+Benefits of Think Aloud
+• Provides insights into user decision-making
+processes.
+
+Usability Metrics
+• Objective measures: task completion rate,
+error rate, and time on task.
+
+Task Completion Rate
+• Percentage of users who successfully
+complete a task. Aim for >85%.
+
+Error Rate
+• Tracks errors made during interaction. Lower
+is better (e.g., 5%).
+
+Time on Task
+• Measures efficiency by recording time needed
+to complete tasks.
+
+System Usability Scale (SUS)
+• A standardized survey to evaluate usability
+(Brooke, 1996).
+
+SUS Scoring
+• Scores >68 indicate above-average usability.
+
+Eye-Tracking Studies
+• Analyze user focus and navigation patterns
+(e.g., heatmaps).
+
+A/B Testing
+• Comparing two versions of a system to
+determine which performs better.
+
+Advantages of A/B Testing
+• Provides quantitative data on user
+preferences.
+
+Controlled Experiments
+• Studies that test usability changes under
+controlled conditions.
+
+Remote Usability Testing
+• Allows users to test systems from their own
+environment.
+
+Qualitative Feedback
+• Insights gained from user interviews and
+open-ended questions.
+
+Quantitative Metrics
+• Objective measures like error rates and task
+efficiency.
+
+Net Promoter Score (NPS)
+• Measures user loyalty based on likelihood to
+recommend.
+
+User Satisfaction Surveys
+• Gather subjective user feedback on system
+performance.
+
+Task Analysis
+• Breaks down tasks to understand user goals
+and difficulties.
+
+User Journey Mapping
+• Visual representation of user interactions over
+time.
+
+Accessibility Testing
+• Ensures usability for users with disabilities
+(e.g., WCAG standards).
+
+Mobile Usability
+• Special considerations for usability on mobile
+devices.
+
+Responsive Design
+• Adapts layout and functionality to different
+screen sizes.
+
+Error Recovery
+• Designing for smooth recovery from errors.
+
+Feedback Loops
+• Providing users with immediate and clear
+system feedback.
+
+Progress Indicators
+• Show users their progress in multi-step tasks.
+
+Consistency in Design
+• Ensures uniformity in navigation and
+interaction patterns.
+
+Minimizing Cognitive Load
+• Reduces mental effort needed to use a
+system.
+
+Engagement Metrics
+• Measures how users interact and stay engaged
+with a system.
+
+Iterative Design
+• Improves usability through repeated cycles of
+testing and refinement.
+
+Persona Development
+• Creating user personas to guide design
+decisions.
+
+Scenario Testing
+• Evaluating usability through real-world user
+scenarios.
+
+Information Architecture
+• Structuring content and navigation for optimal
+usability.
+
+Card Sorting
+• Understanding how users categorize and label
+information.
+
+Heatmaps
+• Visual representations of user interaction
+patterns.
+
+Error Messages
+• Designing clear and actionable error
+messages.
+
+Contextual Inquiry
+• Observing users in their natural environment
+to gather insights.
+
+Competitive Usability Analysis
+• Benchmarking usability against competitors.
+
+Load Time Metrics
+• Assessing how quickly pages and features
+load.
+
+Microinteractions
+• Small design details that enhance user
+experience.
+
+User Onboarding
+• Strategies to help users quickly adapt to a
+system.
+
+Gamification
+• Using game-like elements to increase
+engagement.
+
+Emotional Design
+• Creating designs that evoke positive emotions.
+
+Future Trends in Usability
+• Exploring innovations like AI and VR in
+usability testing.
+
+Cross-Cultural Usability
+• Designing for a global and diverse audience.
+
+Simplicity in Design
+• Emphasizing clarity and ease of use.
+
+User Advocacy
+• Ensuring that user needs remain the focus of
+design decisions.
+
+Summary and Conclusion
+• Purpose of testing with users?
+• When should we test with users?
+• How would you plan an in person study?
+• Considerations around remote usability
+testing?
+
+

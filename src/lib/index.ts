@@ -1,4 +1,4 @@
-const lastUpdated: Date = new Date(2025, 11, 22);
+const lastUpdated: Date = new Date(2025, 11, 24);
 
 const StaticAssets = {
 	// Week Materials
@@ -16,6 +16,17 @@ const StaticAssets = {
 	Week6Lecture: '/assets/week6_lecture.pdf',
 	Week6Lab: '/assets/week6_lab.pdf',
 	Week6CICD: '/assets/week6_cicd.pdf',
+	Week7Lecture: '/assets/week7_lecture.pdf',
+	Week7Lab: '/assets/week7_lab.pdf',
+	Week8Lecture: '/assets/week8_lecture.pdf',
+	Week8Lab: '/assets/week8_lab.pdf',
+	Week9Lecture1: '/assets/week9_lecture1.pdf',
+	Week9Lecture2: '/assets/week9_lecture2.pdf',
+	Week9Lab: '/assets/week9_lab.pdf',
+	Week10Lecture: '/assets/week10_lecture.pdf',
+	Week10Lab: '/assets/week10_lab.pdf',
+	MockExam: '/assets/mock_exam.pdf',
+	MockExamRubric: '/assets/mock_exam_rubric.pdf',
 	// Images
 	MoodleLogo: '/assets/logos/moodle.ico',
 	PDFLogo: '/assets/logos/pdf.png',

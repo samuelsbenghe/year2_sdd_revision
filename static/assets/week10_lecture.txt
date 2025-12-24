@@ -1,0 +1,199 @@
+Final Lecture: Advanced Software
+Design and Development
+
+Introduction
+• Wrapping up key topics and introducing
+advanced tools for robust software
+development.
+
+Learning Objectives
+• 1. Strengthen programming skills.
+• 2. Write robust, maintainable, and secure
+code.
+• 3. Collaborate effectively using version
+control.
+• 4. Test-driven development.
+
+1. Defensive Coding
+• Importance of writing code that anticipates
+and handles invalid inputs and errors.
+
+Exception Handling
+• Use try-except blocks to gracefully handle
+unforeseen runtime errors.
+
+Static Code Analysis
+• Tools like SonarQube and PyLint help detect
+bugs and code smells early.
+
+Static Code Analysis
+• Tools like SonarQube and PyLint help detect
+bugs and code smells early.
+
+Design by Contract
+• Define preconditions, postconditions, and
+invariants to ensure code correctness.
+
+Preconditions
+
+postconditions
+• Define preconditions, postconditions, and
+invariants to ensure code correctness.
+
+invariants
+
+2. Modular Design
+• Principles of high cohesion and low coupling
+for scalable systems.
+
+Cohesion
+• Modules should be organised around a single,
+well-defined purpose.
+
+Coupling
+• Minimise dependencies between modules to
+simplify testing and maintenance.
+
+3. Test-Driven Development (TDD)
+• Write tests before implementing functionality
+to ensure requirements are met.
+
+Unit Tests
+• Isolate and test small parts of the codebase
+using frameworks like PyTest.
+
+Integration Tests
+• Ensure that modules interact correctly using
+tools like Selenium.
+
+Code Coverage
+• Measure test coverage with tools like
+Coverage.py.
+
+4. User Testing
+• Involve users early and often to identify
+usability issues.
+
+Usability Testing
+• Evaluate user interactions to improve interface
+design.
+
+Accessibility Testing
+• Ensure the software is usable by people with
+disabilities.
+
+5. Version Control Best Practices
+• Use Git effectively for individual and
+collaborative projects.
+
+6. API Design and Interaction
+• Use APIs to communicate between systems.
+
+cURL Basics
+• Send HTTP requests and handle responses
+from APIs.
+
+Postman and Insomnia
+• Test and debug APIs using GUI tools.
+
+Continuous Integration
+• Merge code frequently and test changes
+automatically.
+
+Continuous Deployment
+• Deploy tested code to production
+automatically.
+
+8. Profiling and Performance
+• Identify bottlenecks and optimise code
+performance.
+
+Command-line Tools
+• Use `htop`, `perf`, and `ab` to monitor and
+benchmark systems. Chrome extensions also
+support profiling.
+
+Error Handling Strategies
+• Graceful degradation, retries, and fallback
+mechanisms.
+
+Error Handling Strategies
+
+Error Handling Strategies
+
+Scalability Awareness
+• Consider the impact of module design on
+scalability.
+
+Real-World Practices
+• Peer code reviews improve code quality and
+team collaboration.
+
+Code Reviews
+• Use GitHub or GitLab to conduct effective
+peer reviews.
+• When you write a new bit of code you have to
+explain it to the team.
+• One person ‘chairs’ the code review, takes
+notes, actions.
+• One or more person assigned to critique, but
+others can also ask questions for clarity.
+
+Documentation
+• Document code clearly.
+• Unit tests document functionality (or at least
+perceived expectations.)
+• Comments are your friend e.g. docstrings.
+
+Documentation
+
+Future-Proofing Code
+• Refactor to manage technical debt and
+maintain code quality.
+
+Introduction to DevOps
+• Learn about DevOps culture and tools for
+collaboration.
+
+Final Thoughts
+• Most people don’t know what they’re doing.
+• Criticality of self is vital.
+• Empirical testing will get you 80% of the way
+there.
+• Some of this stuff is still subjective (e.g. too
+much code coverage for your tests is generally
+not desirable.)
+
+Final Thoughts
+Antoine de Saint-Exupéry (Philosopher and
+Writer):
+“Perfection is achieved, not when there is
+nothing more to add, but when there is
+nothing left to take away.”
+
+Final Thoughts
+Aristotle (Greek Philosopher):
+“The whole is greater than the sum of its
+parts.”
+
+Final Thoughts
+Confucius (Chinese Philosopher):
+“Success depends upon previous preparation,
+and without such preparation, there is sure to
+be failure.”
+
+Final Thoughts
+Voltaire (French Philosopher):
+“The best is the enemy of the good.”
+
+Final Thoughts
+You are just getting started on what could be a
+very exciting journey.
+
+Thank You!
+• Coursework deadline is coming up.
+• Exams in January.
+• I’ll see you all again (soon) for Computing
+Project II...
+
+

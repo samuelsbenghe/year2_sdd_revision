@@ -1,0 +1,256 @@
+Practical Lab: Secure Memory Management for
+Python and JavaScript
+Quite a bit to get through today. We’ll look at some JS/Python examples of
+bad practice and attempt to fix them. We’ll move on to some exam practice in
+the second hour of the session before finishing up with a bit of reading around
+the inner workings of JS and Python ie what goes on under the hood. I would
+suggest running the Python examples in Jupyter notebook as they will freeze
+(and possibly crash) your machine.
+
+Activity 1:
+Python
+
+Simulating Memory Management Issues in
+
+Write a Python script that creates a memory leak using an infinite loop appending data to a list. Run the script and observe the memory usage over time.
+# Example code to test
+def create_leak():
+l = []
+while True:
+l.append('leak')
+create_leak()
+
+Reflection:
+How could you prevent such a memory leak in a real application? spoiler alert!
+To avoid such leaks, ensure that resources are managed properly and avoid holding unnecessary references to large objects. Use the gc module to periodically
+clean up unused objects if necessary.
+
+1
+
+Activity 2:
+JavaScript
+
+Identifying
+
+Memory
+
+Leaks
+
+in
+
+Write a JavaScript function that creates a memory leak by retaining references
+to a large object.
+let obj = {};
+let array = [];
+for (let i = 0; i < 1000000; i++) {
+obj[i] = "leak";
+}
+array.push(obj);
+
+Reflection:
+What changes would you make to this code to prevent memory leaks?
+spoiler alert! To prevent memory leaks, release references to unused objects:
+javascript obj = null;
+
+2
+
+Activity 3:
+Python
+
+Practical Garbage Collection in
+
+Use the gc module to simulate garbage collection. Create objects, remove references, and use gc.collect() to observe memory usage before and after.
+import gc
+# Allocate a large object
+data = [i for i in range(1000000)]
+print(f"Before cleanup: {gc.get_count()}")
+# Remove reference
+data = None
+gc.collect()
+print(f"After cleanup: {gc.get_count()}")
+
+Reflection :
+What did you observe about memory usage before and after garbage collection?
+spoiler alert! Before garbage collection, memory usage will be higher due to
+the large object. After calling gc.collect(), the unused object is cleared, and
+memory usage decreases.
+
+3
+
+Activity 4: Memory-eﬀicient Data Handling in
+Python
+Refactor the following script to use a generator instead of a list for memory
+eﬀiciency. Spoiler: the type of bracket you use changes the data type (implicit
+in Python)
+# Inefficient memory usage
+numbers = [i for i in range(1000000)]
+
+Reflection:
+What is the benefit of using a generator instead of a list? spoiler alert! Generators are memory-eﬀicient because they yield one item at a time rather than
+storing the entire list in memory. Refactored code: python numbers = (i for
+i in range(1000000))
+
+4
+
+Activity 5: Buffer Overflow Simulation in Python
+You generally can’t produce these in Python, but let’s look at a similar sort of
+scenario. Simulate a memory error by nesting lists repeatedly.
+def nested_lists():
+lst = []
+for _ in range(1000000):
+lst = [lst]
+nested_lists()
+
+Reflection
+This plays into both Python’s strength(s) and weaknesses. Let’s look at how.
+
+Understanding Python
+Nested Structures
+
+Memory
+
+Usage
+
+and
+
+In Python, memory management is dynamic and handled by the Python interpreter. However, issues such as excessive memory consumption or even memory
+errors can occur when designing ineﬀicient or overly complex data structures.
+One example of such ineﬀiciency is the creation of deeply nested lists.
+
+How Memory is Used in Nested Structures
+When a list is nested within another list, each layer of nesting requires additional
+memory: - The outer list holds a reference to the inner list. - The inner list
+holds references to its own elements, which could include another nested list.
+- As the nesting grows deeper, the memory required to store these references
+increases exponentially.
+Example Growth of Nested Structures:
+• A single list, [], uses minimal memory.
+• A nested list like [[]] adds one level of nesting, requiring additional memory for the reference to the inner list.
+• With every subsequent level, the structure grows deeper: [[[]]],
+[[[[]]]], and so on.
+Each layer of this growth results in more memory usage because: - Python
+dynamically allocates memory for lists. - References between nested lists prevent
+memory from being reclaimed.
+
+5
+
+Why Memory Errors Occur
+Python is designed to handle large data structures eﬀiciently, but even it has
+limits. Memory errors occur when: 1. The structure grows beyond the available
+memory on the system. 2. Python’s garbage collector cannot free up memory
+because the structure is still in use. 3. Recursion or iteration creates increasingly
+large objects that exhaust memory.
+Common Triggers of Memory Issues:
+• Exponential Growth: Deeply nested structures grow exponentially, consuming memory at a faster rate than flat structures.
+• Lingering References: If objects hold references to each other, the
+garbage collector cannot reclaim their memory until those references are
+explicitly removed.
+• System Constraints: Python’s memory allocation is limited by the system’s hardware, such as available RAM.
+
+Impact of Ineﬀicient Memory Use
+Ineﬀicient memory usage doesn’t just lead to program crashes—it also affects
+performance: - Slower Execution: As memory becomes scarce, the operating
+system may start swapping memory to disk, which is much slower than RAM. Resource Starvation: Other programs running on the same system may also
+be affected by excessive memory consumption.
+
+Preventing Memory Errors in Python
+1. Monitor Memory Usage:
+• Use tools like tracemalloc to track memory allocation during execution.
+• Periodically print memory usage to understand how resources are
+consumed.
+2. Avoid Excessive Nesting:
+• Flatten structures where possible, avoiding unnecessary levels of nesting.
+• Design algorithms that use simpler, more eﬀicient data structures.
+3. Use Generators for Large Datasets:
+• Replace large in-memory lists with generators that produce items on
+demand.
+4. Limit Object Lifetimes:
+• Explicitly delete objects that are no longer needed using the del
+statement.
+• Use context managers (e.g., with statements) to handle resources like
+files and connections.
+5. Understand and Manage Circular References:
+
+6
+
+• Avoid scenarios where two objects reference each other, preventing
+garbage collection.
+• Use Python’s weakref module to create references that do not prevent garbage collection.
+
+Conclusion
+While Python’s dynamic memory management prevents many traditional errors,
+ineﬀiciencies in program design can still lead to excessive memory usage or
+errors. By understanding how nested structures consume memory and adopting
+best practices, developers can write eﬀicient, scalable programs that avoid such
+pitfalls. Just because Python lets you get away with it (and can handle lots of
+ineﬀiciency) doesn’t mean you should be lazy.
+
+7
+
+Activity 6: Tracking Memory in a JavaScript
+Web Application
+Use browser developer tools to profile the memory of a simple JavaScript program. Write a program that continuously appends data to a list.
+let data = [];
+setInterval(() => {
+data.push(new Array(1000).fill('leak'));
+}, 100);
+Task:
+•
+Open your browser’s developer tools and navigate to the memory tab.
+•
+Run the program and observe the memory usage over time.
+•
+Stop the program and release references to data by setting data = null.
+spoiler alert! After setting data = null, memory usage should decrease as the
+garbage collector clears the unused object.
+
+Activity 7: File handling and Python
+Let’s consider how we open and read a file to memory.
+# Bad Example
+file = open("data.txt", "r")
+lines = file.readlines()
+Why do you think this is a bad example? How might you encapsulate it in some
+logic? Consider how we open and close the file and see if you can fix it! spoiler
+alert! You should be using with open and some logic that includes closing the
+file once read. Have a go at fixing it.
+
+8
+
+Exam Practice
+Question 1: Resource Management in Python (10 Marks)
+You are tasked with designing a Python application that handles file operations
+and large data processing. Discuss the importance of proper resource management in such applications and propose solutions to prevent memory leaks
+and resource wastage. Support your answer with examples of best practices
+in Python. Rubric: Criteria Marks Explanation of resource management importance 3 Identification of potential issues (e.g., unclosed files, large unused
+objects) 3 Description of best practices (e.g., with statements, garbage collection) 3 Use of relevant examples or code snippets 1
+
+Question 2: Detecting and Preventing Memory Leaks in
+JavaScript (10 Marks)
+Memory leaks can occur in JavaScript applications due to incorrect reference
+management. Describe a scenario where a memory leak might occur in a web
+application. Explain how you would detect and resolve such issues using modern
+JavaScript tools and techniques. Rubric: Criteria Marks Clear description of
+a memory leak scenario 3 Explanation of tools for detection (e.g., browser dev
+tools) 3 Discussion of techniques for resolving leaks (e.g., releasing references) 3
+Clarity and structure of the response 1
+
+Question 3: Generators vs Lists in Python (10 Marks)
+Explain the difference between generators and lists in Python. Discuss a use
+case where using a generator would be more appropriate than using a list, considering both memory eﬀiciency and performance. Rubric: Criteria Marks Clear
+explanation of differences between generators and lists 3 Identification of memory eﬀiciency advantages of generators 3 Relevant use case where generators are
+preferable (e.g., large datasets) 3 Use of examples or scenarios to support the
+explanation 1
+
+9
+
+Additional Reading
+“Memory Management in Python” by GeeksforGeeks: This article provides an
+in-depth look at how Python handles memory allocation and garbage collection,
+essential for writing eﬀicient and secure code. GEEKSFORGEEKS {newline}
+“Memory Management in JavaScript” by GeeksforGeeks: This resource explains
+JavaScript’s memory management mechanisms, including the heap, stack, and
+garbage collection processes, crucial for optimizing web applications. GEEKSFORGEEKS
+
+10
+
+

@@ -1,0 +1,96 @@
+Usability Testing Lab Worksheet
+This worksheet will guide you through a usability testing lab focused on evaluating the form you designed and built for your coursework. We will explore
+key usability concepts and apply practical testing methods to gather valuable
+feedback and improve your form’s design.
+Time: 2 hours
+
+Section 1: Introduction to Usability (20 minutes)
+Objectives:
+• Understand the core principles of usability.
+• Identify common usability issues in form design.
+• Discuss the importance of user-centred design.
+Activities:
+1. Brainstorm: In groups, discuss what makes a website or application
+“usable.” Consider factors like ease of use, eﬀiciency, memorability, errors,
+and user satisfaction.
+2. Case Study Analysis: Analyse examples of well-designed and poorly
+designed forms. Look at examples from government digital services (e.g.,
+GOV.UK) and commercial websites for comparison. Identify the key differences and their impact on usability.
+3. Usability Principles Review: Review Jakob Nielsen’s 10 Usability
+Heuristics (https://www.nngroup.com/articles/ten-usability-heuristics/)
+and discuss how they apply to form design.
+
+Section 2: Planning Your Usability Test (20 minutes)
+Objectives:
+• Define clear objectives for your usability test.
+• Identify your target user group and recruit participants.
+• Develop realistic tasks for participants to perform.
+• You will also want to think about things like informed consent, right to
+withdraw, data retention policies etc.
+Activities:
+1. Define Objectives: What specific aspects of your form do you want to
+test? (e.g., ease of understanding labels, eﬀiciency of completion, error
+prevention)
+2. Participant Recruitment: Determine who your target users are and
+recruit 3-5 participants who represent that group. Consider your coursemates, friends, or family members who fit the user profile. If you need
+to you can pop to the library or one of the other departments to recruit
+users, but you can mostly work with other students in the lab.
+1
+
+3. Task Development: Create 3-5 specific tasks for participants to complete using your form (e.g., “Fill out the form with this information,” “Try
+to submit the form with missing required fields”). Refer to your form’s
+purpose and user needs when defining tasks. Hopefully the use (misuse)
+of the form will tease out some issues. Try to break your colleague’s form
+if you can.
+
+Section 3: Conducting the Usability Test (40 minutes)
+Objectives:
+• Practise different usability testing methods (e.g., think-aloud protocol).
+• Gather qualitative and quantitative data from participants.
+• Observe and document user behaviour and feedback.
+Activities:
+1. Test Facilitation: One person acts as the facilitator, guiding the participant through the tasks and encouraging them to think aloud. Another
+person acts as the observer, taking notes and recording any issues. For
+this exercise you might want to have a go at both simultaneously as the
+tasks are quite simple.
+2. Think-Aloud Protocol: Encourage participants to verbalise their
+thoughts and actions as they interact with the form. Prompt them with
+questions like “What are you thinking now?” or “What do you expect to
+happen?”
+3. Data Collection: Record observations, task completion times, errors
+made, and any comments from participants. Use a structured observation
+sheet or a simple notebook to capture data. You can find lots of these
+templates on the NNGroup site - https://www.nngroup.com/articles/freeux-templates/
+
+Section 4: Analysing and Interpreting Results (30 minutes)
+Objectives:
+• Identify usability problems and their severity.
+• Prioritise areas for improvement based on user feedback.
+• Generate concrete recommendations for redesign.
+Activities:
+1. Data Synthesis: Compile all observations, notes, and recordings from
+the usability tests. Look for patterns and common themes.
+2. Issue Identification: Identify recurring patterns of user errors, confusion, or frustration.
+3. Severity Rating: Rate the severity of each usability issue (e.g., low,
+medium, high) based on its impact on user experience and frequency of
+occurrence. I like to use a combination of ratings for both severity and
+2
+
+likelihood of occurrence. You can mix and match numbers with something
+like a traﬀic light system for this.
+
+Section 5: Reporting and Redesign (10 minutes)
+Objectives:
+• Communicate your findings in a clear and concise report.
+• Translate user feedback into actionable design improvements.
+Activities:
+1. Report Writing (Word limit: 200 words): Briefly summarise your
+usability testing process, key findings, and recommendations for improvement. Focus on the most critical usability issues and suggest specific
+design changes. Throw the useful bits into comments in your coursework.
+Remember: Usability testing is an iterative process. By repeating this cycle of
+testing, analysis, and redesign, you can continuously improve the user experience
+of your form.
+
+3
+
+
