@@ -1,4 +1,4 @@
-const lastUpdated: Date = new Date(2025, 11, 24);
+const lastUpdated: Date = new Date(2025, 11, 27);
 
 const StaticAssets = {
 	// Week Materials
