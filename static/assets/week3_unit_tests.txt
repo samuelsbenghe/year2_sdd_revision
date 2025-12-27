@@ -1,0 +1,119 @@
+﻿What is Unit Testing?
+• Unit testing focuses on verifying the 
+
+functionality of individual pieces (units) of 
+code in isolation.
+
+
+
+Why Unit Testing is Important
+• Ensures that code behaves as expected, 
+
+prevents bugs early in development, and 
+facilitates refactoring.
+
+
+
+Best Practices for Unit Testing
+• Keep tests small and focused, name tests 
+
+clearly, and isolate tests from external 
+dependencies.
+
+
+
+Test-Driven Development (TDD)
+• Write tests first, then write code to pass the 
+
+tests. Red-Green-Refactor cycle is often 
+followed.
+
+
+
+Anatomy of a Unit Test
+• A typical unit test includes setup, execution, 
+
+assertion, and teardown.
+
+
+
+Example: Simple Unit Test in 
+JavaScript
+
+
+
+Edge Cases in Unit Testing
+• Testing edge cases (e.g., null values, empty 
+
+inputs) ensures robustness.
+
+
+
+Mocks and Stubs in Unit Testing
+• Use mocks and stubs to simulate dependencies and 
+
+control the behavior of external systems.
+• Stubs: Fake versions of things that give pre-determined 
+
+answers. They help isolate the code you're testing.
+
+• Mocks: Fake versions of things that record how they 
+were used. They help verify that your code interacts with 
+other parts of the system correctly.
+
+
+
+Example: Mocking
+
+
+
+Example: Stubs
+
+
+
+How to Write Good Assertions
+• Ensure that your tests cover a range of inputs 
+
+and make clear, focused assertions.
+
+
+
+Common Unit Testing Libraries 
+(JavaScript)
+
+• Popular tools include Jest, Mocha, Chai, and 
+Jasmine for writing and running unit tests in 
+JavaScript.
+
+
+
+Example: Scenario
+A teacher needs to update the grade of a student for a particular assignment. They 
+would log into the system, search for the student by name or ID, navigate to the 
+relevant course and assignment, and then enter the new grade. The system would 
+then update the student's record with the new grade.
+
+
+
+Testing with Different Inputs
+• Test cases should cover normal, boundary, and 
+
+exceptional inputs to ensure comprehensive 
+coverage.
+
+
+
+Refactoring and Unit Testing
+• Unit tests enable safe refactoring. Code can be 
+
+improved without breaking existing 
+functionality.
+
+
+
+Unit Testing in Continuous 
+Integration (CI)
+
+• Integrating unit tests in CI/CD pipelines 
+ensures that code is tested every time changes 
+are made.

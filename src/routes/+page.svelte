@@ -6,10 +6,8 @@
 	import Heading from '$lib/components/Heading.svelte';
 	import Text from '$lib/components/Text.svelte';
 	import HorizontalBreak from '$lib/components/HorizontalBreak.svelte';
-	import GridList from '$lib/components/GridList.svelte';
-	import GridListItem from '$lib/components/GridListItem.svelte';
 	import Notice from '$lib/components/Notice.svelte';
-	import { BookOpen, ClipboardCheck, Layers, LayoutGrid, ArrowRight } from '@lucide/svelte';
+	import { BookOpen, ClipboardCheck, LayoutGrid, ArrowRight } from '@lucide/svelte';
 </script>
 
 <svelte:head>
@@ -53,17 +51,6 @@
 					<div class="flex-1">
 						<h3 class="font-semibold text-slate-800 group-hover:text-indigo-600">Quizzes</h3>
 						<p class="text-sm text-slate-500">Test your knowledge</p>
-					</div>
-					<ArrowRight class="h-5 w-5 text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-indigo-600" />
-				</a>
-
-				<a href="/topics" class="group flex items-center gap-4 rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-all hover:border-indigo-300 hover:shadow-md">
-					<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-100 text-purple-600">
-						<Layers class="h-6 w-6" />
-					</div>
-					<div class="flex-1">
-						<h3 class="font-semibold text-slate-800 group-hover:text-indigo-600">Topics</h3>
-						<p class="text-sm text-slate-500">Browse by subject area</p>
 					</div>
 					<ArrowRight class="h-5 w-5 text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-indigo-600" />
 				</a>

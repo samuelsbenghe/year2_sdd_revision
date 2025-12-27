@@ -1,7 +1,7 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.png';
-	import { BookOpen, ClipboardCheck, Layers, LayoutGrid, HomeIcon } from '@lucide/svelte';
+	import { BookOpen, ClipboardCheck, LayoutGrid, HomeIcon } from '@lucide/svelte';
 	import { page } from '$app/state';
 	import { lastUpdated } from '$lib';
 	import { goto } from '$app/navigation';
@@ -23,7 +23,6 @@
 	const categories = [
 		{ href: '/lectures', label: 'Lectures', icon: BookOpen, id: 'lectures' },
 		{ href: '/quizzes', label: 'Quizzes', icon: ClipboardCheck, id: 'quizzes' },
-		{ href: '/topics', label: 'Topics', icon: Layers, id: 'topics' },
 		{ href: '/tools', label: 'Tools', icon: LayoutGrid, id: 'tools' }
 	];
 
