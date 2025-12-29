@@ -7,7 +7,7 @@
 	import Text from '$lib/components/Text.svelte';
 	import HorizontalBreak from '$lib/components/HorizontalBreak.svelte';
 	import Notice from '$lib/components/Notice.svelte';
-	import { ArrowRight, ClipboardCheck, Brain, BookOpen, Code, Shield, GitBranch, Users, Wrench } from '@lucide/svelte';
+	import { ArrowRight, ClipboardCheck, Brain, BookOpen, Code, Shield, GitBranch, Users, Wrench, AlertTriangle, FileCode } from '@lucide/svelte';
 </script>
 
 <svelte:head>
@@ -38,7 +38,7 @@
 			<Text>Select a topic to test your knowledge. Each quiz covers key concepts from the corresponding lecture materials.</Text>
 
 			<div class="mt-6 space-y-3">
-				<a href="/quizzes/design-principles" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-green-300 hover:shadow-md">
+				<a href="/quizzes/test?name=design-principles" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-green-300 hover:shadow-md">
 					<div class="flex items-center justify-between">
 						<div class="flex items-center gap-4">
 							<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-100">
@@ -53,7 +53,7 @@
 					</div>
 				</a>
 
-				<a href="/quizzes/testing" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-green-300 hover:shadow-md">
+				<a href="/quizzes/test?name=testing" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-green-300 hover:shadow-md">
 					<div class="flex items-center justify-between">
 						<div class="flex items-center gap-4">
 							<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-green-100">
@@ -68,7 +68,7 @@
 					</div>
 				</a>
 
-				<a href="/quizzes/user-testing" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-green-300 hover:shadow-md">
+				<a href="/quizzes/test?name=user-testing" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-green-300 hover:shadow-md">
 					<div class="flex items-center justify-between">
 						<div class="flex items-center gap-4">
 							<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-purple-100">
@@ -83,7 +83,7 @@
 					</div>
 				</a>
 
-				<a href="/quizzes/version-control" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-green-300 hover:shadow-md">
+				<a href="/quizzes/test?name=version-control" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-green-300 hover:shadow-md">
 					<div class="flex items-center justify-between">
 						<div class="flex items-center gap-4">
 							<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-100">
@@ -98,7 +98,7 @@
 					</div>
 				</a>
 
-				<a href="/quizzes/security" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-green-300 hover:shadow-md">
+				<a href="/quizzes/test?name=security" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-green-300 hover:shadow-md">
 					<div class="flex items-center justify-between">
 						<div class="flex items-center gap-4">
 							<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-red-100">
@@ -113,7 +113,37 @@
 					</div>
 				</a>
 
-				<a href="/quizzes/mixed" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-green-300 hover:shadow-md">
+				<a href="/quizzes/test?name=anti-patterns" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-green-300 hover:shadow-md">
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-4">
+							<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-yellow-100">
+								<AlertTriangle class="h-5 w-5 text-yellow-600" />
+							</div>
+							<div>
+								<h3 class="font-semibold text-slate-800 group-hover:text-green-600">Anti-Patterns & Code Quality</h3>
+								<p class="text-sm text-slate-500">God Object, Spaghetti Code, refactoring, linters</p>
+							</div>
+						</div>
+						<ArrowRight class="h-5 w-5 text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-green-600" />
+					</div>
+				</a>
+
+				<a href="/quizzes/test?name=api-design" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-green-300 hover:shadow-md">
+					<div class="flex items-center justify-between">
+						<div class="flex items-center gap-4">
+							<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-100">
+								<FileCode class="h-5 w-5 text-cyan-600" />
+							</div>
+							<div>
+								<h3 class="font-semibold text-slate-800 group-hover:text-green-600">API Design & Documentation</h3>
+								<p class="text-sm text-slate-500">RESTful APIs, code reviews, profiling, documentation</p>
+							</div>
+						</div>
+						<ArrowRight class="h-5 w-5 text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-green-600" />
+					</div>
+				</a>
+
+				<a href="/quizzes/test?name=mixed" class="group block rounded-lg border border-slate-200 bg-white p-5 transition-all hover:border-green-300 hover:shadow-md">
 					<div class="flex items-center justify-between">
 						<div class="flex items-center gap-4">
 							<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100">
