@@ -60,20 +60,27 @@
 </svelte:head>
 
 <div class="flex h-screen w-full">
-	<aside class="hidden w-64 shrink-0 flex-col border-r border-slate-800 bg-slate-900 text-slate-300 md:flex">
-		<div class="flex h-16 items-center border-b border-slate-800 px-6 font-bold tracking-wider text-white">Samuel's SDD Revision</div>
+	<aside class="bg-linear-to-b hidden w-72 shrink-0 flex-col border-r border-slate-800/50 from-slate-900 via-slate-900 to-slate-950 text-slate-300 md:flex">
+		<!-- Logo/Brand Header -->
+		<div class="flex h-16 items-center gap-3 border-b border-slate-800/50 bg-slate-900/50 px-6 backdrop-blur-sm">
+			<div class="bg-linear-to-br flex h-8 w-8 items-center justify-center rounded-lg from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/25">
+				<BookOpen class="h-4 w-4 text-white" />
+			</div>
+			<span class="bg-linear-to-r from-white to-slate-300 bg-clip-text font-bold tracking-wide text-transparent">SDD Revision</span>
+		</div>
 
 		<nav class="flex-1 space-y-1 overflow-y-auto px-3 py-6">
 			<!-- Homepage -->
 			<a
 				href="/"
-				class={`group flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors
-			${page.url.pathname === '/' ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'}`}
+				class={`group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200
+			${page.url.pathname === '/' ? 'bg-linear-to-r from-indigo-600 to-indigo-500 text-white shadow-lg shadow-indigo-500/25' : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'}`}
 			>
-				<HomeIcon class="mr-3 h-6 w-6 shrink-0 text-slate-400 group-hover:text-indigo-400" />
+				<HomeIcon class={`h-5 w-5 shrink-0 transition-colors ${page.url.pathname === '/' ? 'text-white' : 'text-slate-400 group-hover:text-indigo-400'}`} />
 				<span>Home</span>
 			</a>
-			<p class="mb-2 mt-2 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Main Menu</p>
+
+			<p class="mb-2 mt-4 px-3 text-[11px] font-semibold uppercase tracking-widest text-slate-500">Main Menu</p>
 
 			<!-- Lectures -->
 			<details class="group" open={lecturesToggle}>
@@ -82,23 +89,25 @@
 						e.preventDefault(); // stop native <details> toggle
 						toggleLectures();
 					}}
-					class={`${page.url.pathname.startsWith('/lectures') ? 'bg-slate-800 text-white' : 'bg-transparent hover:text-white'} flex cursor-pointer list-none items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition-colors hover:bg-slate-800`}
+					class={`${page.url.pathname.startsWith('/lectures') ? 'bg-linear-to-r from-indigo-600 to-indigo-500 text-white shadow-lg shadow-indigo-500/25' : 'bg-transparent text-slate-300 hover:bg-slate-800/70 hover:text-white'} flex cursor-pointer list-none items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200`}
 				>
-					<BookOpen class={page.url.pathname.startsWith('/lectures') ? 'text-indigo-400' : 'text-slate-400'} />
+					<BookOpen class={`h-5 w-5 shrink-0 transition-colors ${page.url.pathname.startsWith('/lectures') ? 'text-white' : 'text-slate-400 group-hover:text-indigo-400'}`} />
 					<span class="flex-1">Lectures</span>
 
-					<svg class="ml-2 h-4 w-4 transform text-slate-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<svg class="h-4 w-4 transform text-current opacity-60 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
 					</svg>
 				</summary>
 
-				<div class="mt-1 space-y-1 pl-4">
+				<div class="ml-5 mt-2 space-y-0.5 border-l border-slate-700/50 pl-4">
 					{#each weeks as week}
 						<a
 							href={week.href}
-							class={page.url.pathname === week.href
-								? 'block rounded-md border-l-2 border-indigo-500 bg-indigo-900/50 px-3 py-2 text-sm font-medium text-white'
-								: 'block rounded-md border-l-2 border-transparent px-3 py-2 text-sm font-medium text-slate-400 transition-colors hover:bg-slate-800 hover:text-white'}
+							class={`block rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ${
+								page.url.pathname === week.href
+									? '-ml-px border-l-2 border-indigo-400 bg-indigo-500/10 text-indigo-300'
+									: 'text-slate-400 hover:translate-x-1 hover:bg-slate-800/50 hover:text-slate-200'
+							}`}
 						>
 							{week.label}
 						</a>
@@ -110,20 +119,24 @@
 			{#each categories.slice(1) as cat}
 				<a
 					href={cat.href}
-					class={`group flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors
-			${page.url.pathname.startsWith(cat.href) ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'}`}
+					class={`group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200
+			${page.url.pathname.startsWith(cat.href) ? 'bg-linear-to-r from-indigo-600 to-indigo-500 text-white shadow-lg shadow-indigo-500/25' : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'}`}
 				>
-					<cat.icon class="mr-3 h-6 w-6 shrink-0 text-slate-400 group-hover:text-indigo-400" />
+					<cat.icon class={`h-5 w-5 shrink-0 transition-colors ${page.url.pathname.startsWith(cat.href) ? 'text-white' : 'text-slate-400 group-hover:text-indigo-400'}`} />
 					{cat.label}
 				</a>
 			{/each}
 		</nav>
 
-		<div class="border-t border-slate-800 p-4">
-			<div class="flex items-center">
-				<div class="ml-3">
-					<p class="text-sm font-medium text-white">Work in Progress</p>
-					<p class="text-xs font-medium text-slate-500">Last Updated: {lastUpdated.toLocaleDateString()}</p>
+		<!-- Footer -->
+		<div class="border-t border-slate-800/50 bg-slate-900/50 p-4 backdrop-blur-sm">
+			<div class="flex items-center gap-3 rounded-lg bg-slate-800/50 p-3">
+				<div class="bg-linear-to-br flex h-9 w-9 items-center justify-center rounded-full from-amber-400 to-orange-500 shadow-md">
+					<span class="text-xs font-bold text-white">WIP</span>
+				</div>
+				<div>
+					<p class="text-sm font-semibold text-white">Work in Progress</p>
+					<p class="text-xs text-slate-400">Updated {lastUpdated.toLocaleDateString()}</p>
 				</div>
 			</div>
 		</div>

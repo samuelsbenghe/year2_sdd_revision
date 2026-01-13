@@ -2,6 +2,6 @@
 	let { children }: { children: any } = $props();
 </script>
 
-<p class="leading-relaxed text-slate-600">
+<p class="text-base leading-7 text-slate-600">
 	{@render children()}
 </p>
