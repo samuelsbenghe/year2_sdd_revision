@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>l7</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ color: #cccccc; background-color: #303030; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ffcfaf; } 
+code span.an { color: #7f9f7f; font-weight: bold; } 
+code span.at { } 
+code span.bn { color: #dca3a3; } 
+code span.bu { } 
+code span.cf { color: #f0dfaf; } 
+code span.ch { color: #dca3a3; } 
+code span.cn { color: #dca3a3; font-weight: bold; } 
+code span.co { color: #7f9f7f; } 
+code span.cv { color: #7f9f7f; font-weight: bold; } 
+code span.do { color: #7f9f7f; } 
+code span.dt { color: #dfdfbf; } 
+code span.dv { color: #dcdccc; } 
+code span.er { color: #c3bf9f; } 
+code span.ex { } 
+code span.fl { color: #c0bed1; } 
+code span.fu { color: #efef8f; } 
+code span.im { } 
+code span.in { color: #7f9f7f; font-weight: bold; } 
+code span.kw { color: #f0dfaf; } 
+code span.op { color: #f0efd0; } 
+code span.ot { color: #efef8f; } 
+code span.pp { color: #ffcfaf; font-weight: bold; } 
+code span.sc { color: #dca3a3; } 
+code span.ss { color: #cc9393; } 
+code span.st { color: #cc9393; } 
+code span.va { } 
+code span.vs { color: #cc9393; } 
+code span.wa { color: #7f9f7f; font-weight: bold; } 
+</style>
+  <style type="text/css">:root {
+
+--bg: #0b1120;
+--surface: #162032;
+--surface-hover: #1e2c44;
+--border: #334460;
+
+--text-primary: #f8fafc; 
+--text-secondary: #cbd5e1; 
+--text-muted: #94a3b8; 
+
+--accent: #7dd3fc; 
+--link-hover: #bae6fd; 
+--code-bg: #030712; 
+--code-text: #f0fdf4; 
+--code-border: #475569;
+}
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+body {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+background-color: var(--bg);
+color: var(--text-secondary);
+line-height: 1.65;
+padding: 36px 24px;
+max-width: 920px;
+margin: 0 auto;
+}
+
+h1, h2, h3, h4 {
+color: var(--text-primary);
+font-weight: 700;
+line-height: 1.3;
+}
+h1 {
+font-size: 2.1rem;
+border-bottom: 2px solid var(--border);
+padding-bottom: 14px;
+margin-bottom: 24px;
+}
+h2 {
+font-size: 1.45rem;
+margin-top: 40px;
+margin-bottom: 16px;
+border-bottom: 1px solid var(--border);
+padding-bottom: 8px;
+}
+h3 {
+font-size: 1.2rem;
+margin-top: 28px;
+margin-bottom: 10px;
+color: var(--accent);
+}
+p {
+margin-bottom: 18px;
+}
+
+a {
+color: var(--accent);
+text-decoration: underline;
+text-underline-offset: 3px;
+transition: color 0.15s;
+}
+a:hover, a:focus-visible {
+color: var(--link-hover);
+outline: 2px solid var(--accent);
+outline-offset: 2px;
+}
+
+ul, ol {
+margin-left: 28px;
+margin-bottom: 20px;
+}
+li {
+margin-bottom: 8px;
+}
+
+p code, li code, td code {
+font-family: "JetBrains Mono", "Fira Code", monospace;
+font-size: 0.9em;
+background-color: var(--surface);
+color: var(--text-primary);
+padding: 2px 7px;
+border-radius: 4px;
+border: 1px solid var(--border);
+}
+
+pre {
+background-color: var(--code-bg) !important;
+border: 1px solid var(--border);
+border-radius: 8px;
+padding: 16px 20px;
+overflow-x: auto;
+margin-bottom: 24px;
+line-height: 1.5;
+}
+pre code {
+background-color: transparent !important;
+border: none;
+padding: 0;
+color: var(--text-secondary);
+}
+
+#TOC {
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: 8px;
+padding: 20px 24px;
+margin-bottom: 36px;
+}
+#TOC > ul {
+margin-left: 0;
+list-style-type: none;
+}
+#TOC a {
+text-decoration: none;
+color: var(--text-primary);
+font-weight: 500;
+}
+#TOC a:hover {
+text-decoration: underline;
+color: var(--accent);
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+margin-bottom: 28px;
+background: var(--surface);
+border-radius: 6px;
+overflow: hidden;
+border: 1px solid var(--border);
+}
+th, td {
+padding: 12px 16px;
+text-align: left;
+border-bottom: 1px solid var(--border);
+}
+th {
+background: #060b16;
+color: var(--text-primary);
+font-weight: 600;
+text-transform: uppercase;
+font-size: 0.78rem;
+letter-spacing: 0.05em;
+}
+tr:hover td {
+background: var(--surface-hover);
+}
+
+blockquote {
+border-left: 4px solid var(--accent);
+background: #0f1c30;
+padding: 14px 20px;
+border-radius: 0 8px 8px 0;
+margin-bottom: 24px;
+color: var(--text-secondary);
+}
+blockquote p:last-child {
+margin-bottom: 0;
+}
+hr {
+border: 0;
+height: 1px;
+background: var(--border);
+margin: 40px 0;
+}
+</style>
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#lab-07-the-php-8.3-developer-utility-hub-toolbox.php" id="toc-lab-07-the-php-8.3-developer-utility-hub-toolbox.php">Lab 07:
+The PHP 8.3 Developer Utility Hub (<code>toolbox.php</code>)</a>
+<ul>
+<li><a href="#introduction-pedagogical-goals" id="toc-introduction-pedagogical-goals">Introduction &amp; Pedagogical
+Goals</a></li>
+<li><a href="#step-0-connecting-via-ssh-preparing-public_html" id="toc-step-0-connecting-via-ssh-preparing-public_html">Step 0:
+Connecting via SSH &amp; Preparing <code>~/public_html</code></a></li>
+<li><a href="#step-1-the-single-file-dispatcher-pattern-toolbox.php" id="toc-step-1-the-single-file-dispatcher-pattern-toolbox.php">Step 1:
+The Single-File Dispatcher Pattern (<code>toolbox.php</code>)</a></li>
+<li><a href="#step-2-expanding-the-hub-with-four-core-utilities" id="toc-step-2-expanding-the-hub-with-four-core-utilities">Step 2:
+Expanding the Hub with Four Core Utilities</a></li>
+<li><a href="#step-3-independent-expansion-tasks-with-implementation-guides" id="toc-step-3-independent-expansion-tasks-with-implementation-guides">Step
+3: Independent Expansion Tasks (With Implementation Guides)</a></li>
+<li><a href="#pre-assessment-review-questions" id="toc-pre-assessment-review-questions">Pre-Assessment Review
+Questions</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="lab-07-the-php-8.3-developer-utility-hub-toolbox.php">Lab 07:
+The PHP 8.3 Developer Utility Hub (<code>toolbox.php</code>)</h1>
+<p><strong>BSc Computer Science · Dynamic Web Applications</strong></p>
+<p><em>Department of Computing, Goldsmiths, University of
+London</em></p>
+<p><em>Academic Year 2026/27</em></p>
+<h2 id="introduction-pedagogical-goals">Introduction &amp; Pedagogical
+Goals</h2>
+<p>In Week 6, we built a full-stack Python application using Flask,
+WSGI, and SQLite. That architecture required creating an isolated
+virtual environment, installing external packages via <code>pip</code>,
+defining explicit URL route decorators, and starting a long-running
+local process on a custom port.</p>
+<p>In this lab, we explore a fundamentally different web architecture:
+<strong>PHP 8.3 running on a shared production web server
+(<code>doc.gold.ac.uk</code>)</strong>. Powering approximately 75% of
+websites with a known server-side language, PHP uses a
+<strong>shared-nothing, file-based execution model</strong>:</p>
+<ol type="1">
+<li><p><strong>Zero-Process Deployment
+(<code>~/public_html</code>):</strong> You do not need to start, stop,
+or manage a web server process. The department server at
+<code>doc.gold.ac.uk</code> is already running and configured to serve
+files from your <code>~/public_html</code> directory at
+<code>https://doc.gold.ac.uk/~yourusername/</code>.</p></li>
+<li><p><strong>File-Based Routing:</strong> The web server maps URL
+paths directly to <code>.php</code> files inside your
+<code>public_html</code> directory
+(<code>https://doc.gold.ac.uk/~yourusername/lab7/toolbox.php</code>
+executes <code>~/public_html/lab7/toolbox.php</code>). No route
+decorator table is required.</p></li>
+<li><p><strong>Shared-Nothing Lifecycle:</strong> Each incoming HTTP
+request initializes a fresh environment, populates built-in superglobal
+arrays (<code>$_GET</code>, <code>$_POST</code>, <code>$_SERVER</code>,
+<code>$_FILES</code>, <code>$_SESSION</code>), executes the script from
+top to bottom, and releases all request memory immediately upon
+completion.</p></li>
+<li><p><strong>Native HTML Interleaving:</strong> Rather than compiling
+a separate template language like Jinja2, PHP is an HTML-embedded
+language. Any text outside <code>&lt;?php ... ?&gt;</code> tags is
+streamed directly to the client browser as raw HTML, while Zend OPcache
+stores pre-compiled bytecode in shared memory for fast
+execution.</p></li>
+</ol>
+<h3 id="what-you-will-build-today">What You Will Build Today</h3>
+<p>You will construct <strong><code>toolbox.php</code></strong>, a
+self-contained, single-file <strong>Developer Utility Hub</strong>
+containing six modular micro-applications hosted live on your
+<code>doc.gold.ac.uk</code> web space. Beyond learning PHP’s standard
+library, you can access this utility script during next week’s lab
+assessment to inspect hashes, Base64 tokens, JSON payloads, and
+timestamps.</p>
+<ol type="1">
+<li><p><strong>Cryptographic Hash, Bcrypt &amp; Token Generator</strong>
+(<code>hash()</code>, <code>password_hash()</code>,
+<code>\Random\Randomizer</code>)</p></li>
+<li><p><strong>JSON Syntax Validator &amp; Formatter</strong> (PHP 8.3
+<code>json_validate()</code>, <code>json_encode()</code>)</p></li>
+<li><p><strong>Base64 &amp; URL Codec</strong>
+(<code>base64_encode()</code>, <code>base64_decode()</code>,
+<code>rawurlencode()</code>)</p></li>
+<li><p><strong>Natural-Language Date &amp; Unix Epoch Converter</strong>
+(<code>strtotime()</code>, <code>date()</code>)</p></li>
+<li><p><strong>Safe DNS &amp; IP Address Inspector</strong>
+(<code>gethostbyname()</code>, <code>filter_var()</code> SSRF
+protection)</p></li>
+<li><p><strong>Multibyte Text Analyzer &amp; URL Slugifier</strong>
+(<code>str_word_count()</code>, <code>mb_strlen()</code>,
+<code>preg_replace()</code>)</p></li>
+</ol>
+<h2 id="step-0-connecting-via-ssh-preparing-public_html">Step 0:
+Connecting via SSH &amp; Preparing <code>~/public_html</code></h2>
+<p>You do not need to run anything locally on your lab machine or
+laptop. Instead, you will SSH into <code>doc.gold.ac.uk</code> and place
+your <code>.php</code> file inside your <code>~/public_html</code>
+folder, where the department web server will execute it
+automatically.</p>
+<p>Open your terminal and run the following commands (replacing
+<code>yourusername</code> with your actual Goldsmiths campus username,
+e.g. <code>jblog001</code>):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Connect to the department server via SSH</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> yourusername@doc.gold.ac.uk</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Verify PHP 8.3 and Zend OPcache are installed on the server</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">php</span> <span class="at">-v</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Create your lab7 folder inside public_html and set standard web permissions</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/public_html/lab7</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 ~/public_html ~/public_html/lab7</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/public_html/lab7</span></code></pre></div>
+<p>Because the web server on <code>doc.gold.ac.uk</code> evaluates
+<code>.php</code> files automatically on every HTTP request, you never
+need to start or restart a server process. Every time you save changes
+to <code>~/public_html/lab7/toolbox.php</code> (using <code>nano</code>,
+<code>vim</code>, or VS Code Remote-SSH), you can immediately refresh
+your browser at:</p>
+<pre class="text"><code>https://doc.gold.ac.uk/~yourusername/lab7/toolbox.php</code></pre>
+<blockquote>
+<p><strong>Tip: Checking Syntax Before Refreshing:</strong> If a PHP
+file contains a syntax error, a production web server may return an HTTP
+500 error rather than printing stack traces to the public. You can
+always check your file for syntax errors right in your SSH terminal by
+running:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">php</span> <span class="at">-l</span> toolbox.php</span></code></pre></div>
+</blockquote>
+<h2 id="step-1-the-single-file-dispatcher-pattern-toolbox.php">Step 1:
+The Single-File Dispatcher Pattern (<code>toolbox.php</code>)</h2>
+<p>When hosting multiple interactive tools on a single page, the script
+needs a mechanism to determine which form was submitted. We solve this
+using the <strong>Single-File Dispatcher Pattern</strong>:</p>
+<ul>
+<li><p>Every tool card contains its own
+<code>&lt;form method=&quot;POST&quot;&gt;</code> element.</p></li>
+<li><p>Inside each form, a hidden input
+(<code>&lt;input type=&quot;hidden&quot; name=&quot;tool&quot; value=&quot;...&quot;&gt;</code>)
+identifies the specific micro-app.</p></li>
+<li><p>At the top of <code>toolbox.php</code>, we inspect
+<code>$_POST[&#39;tool&#39;]</code> using the null-coalescing operator
+(<code>??</code>) and run only the matching block of logic, storing
+results in an <code>$out</code> associative array.</p></li>
+</ul>
+<h3 id="crucial-security-note-manual-output-escaping">Crucial Security
+Note: Manual Output Escaping</h3>
+<p>Unlike Flask’s Jinja2 engine—which automatically escapes variables
+placed inside <code>{{ ... }}</code>—raw PHP outputs strings verbatim.
+If you echo unescaped user input directly into the page, an attacker can
+submit <code>&lt;script&gt;...&lt;/script&gt;</code> and trigger a
+<strong>Cross-Site Scripting (XSS)</strong> vulnerability. Always wrap
+dynamic values in
+<code>htmlspecialchars($value, ENT_QUOTES, &#39;UTF-8&#39;)</code> before
+rendering them inside HTML.</p>
+<p>Create <code>~/public_html/lab7/toolbox.php</code> on
+<code>doc.gold.ac.uk</code> and add the following foundation containing
+the dispatcher and the first two tools:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span>(strict_types<span class="op">=</span><span class="dv">1</span>)<span class="ot">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Read which tool form was submitted (defaults to empty string on initial GET request)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="va">$tool</span> <span class="op">=</span> <span class="va">$_POST</span>[<span class="st">&#39;tool&#39;</span>] <span class="op">??</span> <span class="st">&#39;&#39;</span><span class="ot">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="va">$out</span>  <span class="op">=</span> []<span class="ot">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">// --- TOOL 1: CRYPTOGRAPHIC HASH, BCRYPT &amp; TOKEN GENERATOR ---</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="va">$tool</span> <span class="op">===</span> <span class="st">&#39;hash&#39;</span>) {</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">$in</span>  <span class="op">=</span> <span class="va">$_POST</span>[<span class="st">&#39;text&#39;</span>] <span class="op">??</span> <span class="st">&#39;&#39;</span><span class="ot">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="va">$rng</span> <span class="op">=</span> <span class="kw">new</span> \Random\<span class="bu">Randomizer</span>()<span class="ot">;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Fast cryptographic digest (for file/data integrity, NOT passwords)</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="va">$out</span>[<span class="st">&#39;sha256&#39;</span>] <span class="op">=</span> <span class="fu">hash</span>(<span class="st">&#39;sha256&#39;</span><span class="ot">,</span> <span class="va">$in</span>)<span class="ot">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Slow, automatically salted password hash (equivalent to Werkzeug generate_password_hash)</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="va">$out</span>[<span class="st">&#39;bcrypt&#39;</span>] <span class="op">=</span> <span class="fu">password_hash</span>(<span class="va">$in</span><span class="ot">,</span> <span class="cn">PASSWORD_DEFAULT</span>)<span class="ot">;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">// PHP 8.3 Randomizer method: generates an unambiguous 12-character token</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="va">$out</span>[<span class="st">&#39;token&#39;</span>]  <span class="op">=</span> <span class="va">$rng</span>-&gt;getBytesFromString(<span class="st">&#39;ABCDEFGHJKLMNPQRSTUVWXYZ23456789&#39;</span><span class="ot">,</span> <span class="dv">12</span>)<span class="ot">;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">// --- TOOL 2: JSON VALIDATOR &amp; FORMATTER (PHP 8.3) ---</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="va">$tool</span> <span class="op">===</span> <span class="st">&#39;json&#39;</span>) {</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="va">$raw</span> <span class="op">=</span> <span class="va">$_POST</span>[<span class="st">&#39;payload&#39;</span>] <span class="op">??</span> <span class="st">&#39;&#39;</span><span class="ot">;</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">// json_validate() is new in PHP 8.3: checks syntax without allocating object memory</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="va">$isValid</span> <span class="op">=</span> <span class="fu">json_validate</span>(<span class="va">$raw</span>)<span class="ot">;</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="va">$out</span>[<span class="st">&#39;status&#39;</span>] <span class="op">=</span> <span class="va">$isValid</span> <span class="ot">?</span> <span class="st">&#39;Valid JSON syntax&#39;</span> <span class="ot">:</span> <span class="st">&#39;Invalid JSON syntax&#39;</span><span class="ot">;</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="va">$out</span>[<span class="st">&#39;pretty&#39;</span>] <span class="op">=</span> <span class="va">$isValid</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        <span class="ot">?</span> <span class="fu">json_encode</span>(<span class="fu">json_decode</span>(<span class="va">$raw</span>)<span class="ot">,</span> <span class="cn">JSON_PRETTY_PRINT</span> <span class="op">|</span> <span class="cn">JSON_UNESCAPED_SLASHES</span>)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>        <span class="ot">:</span> <span class="st">&#39;Correct the JSON syntax errors above to format this payload.&#39;</span><span class="ot">;</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="kw">?&gt;</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;!</span><span class="cn">DOCTYPE</span> html<span class="op">&gt;</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>html lang<span class="op">=</span><span class="st">&quot;en&quot;</span><span class="op">&gt;</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>head<span class="op">&gt;</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>meta charset<span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="op">&gt;</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>meta name<span class="op">=</span><span class="st">&quot;viewport&quot;</span> content<span class="op">=</span><span class="st">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="op">&gt;</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>title<span class="op">&gt;</span><span class="cn">PHP</span> <span class="fl">8.3</span> Developer Utility Hub<span class="op">&lt;/</span>title<span class="op">&gt;</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>style<span class="op">&gt;</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="ot">:</span>root {</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>      <span class="op">--</span>bg<span class="ot">:</span> <span class="co">#0f172a;</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>      <span class="op">--</span>card<span class="ot">:</span> <span class="co">#1e293b;</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>      <span class="op">--</span>border<span class="ot">:</span> <span class="co">#334155;</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>      <span class="op">--</span>text<span class="ot">:</span> <span class="co">#f8fafc;</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>      <span class="op">--</span>muted<span class="ot">:</span> <span class="co">#94a3b8;</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>      <span class="op">--</span>accent<span class="ot">:</span> <span class="co">#38bdf8;</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>      <span class="op">--</span>badge<span class="op">-</span>bg<span class="ot">:</span> <span class="co">#1e1b4b;</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>      <span class="op">--</span>badge<span class="op">-</span>text<span class="ot">:</span> <span class="co">#fbbf24;</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span> { box<span class="op">-</span>sizing<span class="ot">:</span> border<span class="op">-</span>box<span class="ot">;</span> margin<span class="ot">:</span> <span class="dv">0</span><span class="ot">;</span> padding<span class="ot">:</span> <span class="dv">0</span><span class="ot">;</span> }</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>    body {</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>      font<span class="op">-</span>family<span class="ot">:</span> <span class="fu">system</span><span class="op">-</span>ui<span class="ot">,</span> <span class="op">-</span>apple<span class="op">-</span><span class="fu">system</span><span class="ot">,</span> sans<span class="op">-</span>serif<span class="ot">;</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>      background<span class="ot">:</span> <span class="kw">var</span>(<span class="op">--</span>bg)<span class="ot">;</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>      color<span class="ot">:</span> <span class="kw">var</span>(<span class="op">--</span>text)<span class="ot">;</span></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>      padding<span class="ot">:</span> <span class="er">32</span>px <span class="er">24</span>px<span class="ot">;</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>      <span class="fu">max</span><span class="op">-</span>width<span class="ot">:</span> <span class="er">1200</span>px<span class="ot">;</span></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>      margin<span class="ot">:</span> <span class="dv">0</span> auto<span class="ot">;</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>      line<span class="op">-</span>height<span class="ot">:</span> <span class="fl">1.5</span><span class="ot">;</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>    <span class="fu">header</span> {</span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>      display<span class="ot">:</span> flex<span class="ot">;</span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>      justify<span class="op">-</span>content<span class="ot">:</span> space<span class="op">-</span>between<span class="ot">;</span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>      align<span class="op">-</span>items<span class="ot">:</span> center<span class="ot">;</span></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>      margin<span class="op">-</span>bottom<span class="ot">:</span> <span class="er">28</span>px<span class="ot">;</span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>      padding<span class="op">-</span>bottom<span class="ot">:</span> <span class="er">16</span>px<span class="ot">;</span></span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>      border<span class="op">-</span>bottom<span class="ot">:</span> <span class="er">1</span>px solid <span class="kw">var</span>(<span class="op">--</span>border)<span class="ot">;</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>    h1 { font<span class="op">-</span>size<span class="ot">:</span> <span class="fl">1.75</span>rem<span class="ot">;</span> color<span class="ot">:</span> <span class="kw">var</span>(<span class="op">--</span>text)<span class="ot">;</span> }</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>badge {</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>      background<span class="ot">:</span> <span class="kw">var</span>(<span class="op">--</span>badge<span class="op">-</span>bg)<span class="ot">;</span></span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>      color<span class="ot">:</span> <span class="kw">var</span>(<span class="op">--</span>badge<span class="op">-</span>text)<span class="ot">;</span></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>      border<span class="ot">:</span> <span class="er">1</span>px solid <span class="co">#4f46e5;</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>      padding<span class="ot">:</span> <span class="er">6</span>px <span class="er">12</span>px<span class="ot">;</span></span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>      border<span class="op">-</span>radius<span class="ot">:</span> <span class="er">999</span>px<span class="ot">;</span></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>      font<span class="op">-</span>size<span class="ot">:</span> <span class="fl">0.85</span>rem<span class="ot">;</span></span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>      font<span class="op">-</span>weight<span class="ot">:</span> <span class="dv">600</span><span class="ot">;</span></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>      font<span class="op">-</span>family<span class="ot">:</span> ui<span class="op">-</span>monospace<span class="ot">,</span> monospace<span class="ot">;</span></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>grid {</span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>      display<span class="ot">:</span> grid<span class="ot">;</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>      grid<span class="op">-</span>template<span class="op">-</span>columns<span class="ot">:</span> repeat(auto<span class="op">-</span>fit<span class="ot">,</span> minmax(<span class="er">350</span>px<span class="ot">,</span> <span class="er">1</span>fr))<span class="ot">;</span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>      gap<span class="ot">:</span> <span class="er">20</span>px<span class="ot">;</span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>card {</span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>      background<span class="ot">:</span> <span class="kw">var</span>(<span class="op">--</span>card)<span class="ot">;</span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>      border<span class="ot">:</span> <span class="er">1</span>px solid <span class="kw">var</span>(<span class="op">--</span>border)<span class="ot">;</span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>      border<span class="op">-</span>radius<span class="ot">:</span> <span class="er">10</span>px<span class="ot">;</span></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>      padding<span class="ot">:</span> <span class="er">20</span>px<span class="ot">;</span></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>      display<span class="ot">:</span> flex<span class="ot">;</span></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>      flex<span class="op">-</span>direction<span class="ot">:</span> column<span class="ot">;</span></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>      gap<span class="ot">:</span> <span class="er">12</span>px<span class="ot">;</span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>card h2 { font<span class="op">-</span>size<span class="ot">:</span> <span class="fl">1.1</span>rem<span class="ot">;</span> color<span class="ot">:</span> <span class="kw">var</span>(<span class="op">--</span>accent)<span class="ot">;</span> }</span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span>card p<span class="op">.</span>desc { font<span class="op">-</span>size<span class="ot">:</span> <span class="fl">0.85</span>rem<span class="ot">;</span> color<span class="ot">:</span> <span class="kw">var</span>(<span class="op">--</span>muted)<span class="ot">;</span> }</span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>    input[type<span class="op">=</span><span class="st">&quot;text&quot;</span>]<span class="ot">,</span> textarea<span class="ot">,</span> select {</span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>      width<span class="ot">:</span> <span class="dv">100</span><span class="op">%</span><span class="ot">;</span></span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>      background<span class="ot">:</span> <span class="kw">var</span>(<span class="op">--</span>bg)<span class="ot">;</span></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>      border<span class="ot">:</span> <span class="er">1</span>px solid <span class="kw">var</span>(<span class="op">--</span>border)<span class="ot">;</span></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>      color<span class="ot">:</span> <span class="kw">var</span>(<span class="op">--</span>text)<span class="ot">;</span></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>      padding<span class="ot">:</span> <span class="er">10</span>px <span class="er">12</span>px<span class="ot">;</span></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>      border<span class="op">-</span>radius<span class="ot">:</span> <span class="er">6</span>px<span class="ot">;</span></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>      font<span class="op">-</span>family<span class="ot">:</span> ui<span class="op">-</span>monospace<span class="ot">,</span> monospace<span class="ot">;</span></span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>      font<span class="op">-</span>size<span class="ot">:</span> <span class="fl">0.9</span>rem<span class="ot">;</span></span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>    button {</span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>      background<span class="ot">:</span> <span class="kw">var</span>(<span class="op">--</span>accent)<span class="ot">;</span></span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>      color<span class="ot">:</span> <span class="co">#0f172a;</span></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>      border<span class="ot">:</span> none<span class="ot">;</span></span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>      padding<span class="ot">:</span> <span class="er">9</span>px <span class="er">14</span>px<span class="ot">;</span></span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>      border<span class="op">-</span>radius<span class="ot">:</span> <span class="er">6</span>px<span class="ot">;</span></span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>      font<span class="op">-</span>weight<span class="ot">:</span> <span class="dv">700</span><span class="ot">;</span></span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a>      cursor<span class="ot">:</span> pointer<span class="ot">;</span></span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>    button<span class="ot">:</span>hover { opacity<span class="ot">:</span> <span class="fl">0.9</span><span class="ot">;</span> }</span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>    pre {</span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a>      background<span class="ot">:</span> <span class="co">#020617;</span></span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a>      border<span class="ot">:</span> <span class="er">1</span>px solid <span class="kw">var</span>(<span class="op">--</span>border)<span class="ot">;</span></span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a>      padding<span class="ot">:</span> <span class="er">12</span>px<span class="ot">;</span></span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>      border<span class="op">-</span>radius<span class="ot">:</span> <span class="er">6</span>px<span class="ot">;</span></span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>      font<span class="op">-</span>size<span class="ot">:</span> <span class="fl">0.82</span>rem<span class="ot">;</span></span>
+<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a>      overflow<span class="op">-</span>x<span class="ot">:</span> auto<span class="ot">;</span></span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>      color<span class="ot">:</span> <span class="co">#a7f3d0;</span></span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>      white<span class="op">-</span>space<span class="ot">:</span> pre<span class="op">-</span>wrap<span class="ot">;</span></span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a>      word<span class="op">-</span><span class="cf">break</span><span class="ot">:</span> <span class="cf">break</span><span class="op">-</span>all<span class="ot">;</span></span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;/</span>style<span class="op">&gt;</span></span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>head<span class="op">&gt;</span></span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>body<span class="op">&gt;</span></span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span><span class="fu">header</span><span class="op">&gt;</span></span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>h1<span class="op">&gt;</span><span class="cn">PHP</span> <span class="fl">8.3</span> Developer Utility Hub<span class="op">&lt;/</span>h1<span class="op">&gt;</span></span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>span <span class="kw">class</span><span class="op">=</span><span class="st">&quot;badge&quot;</span><span class="op">&gt;</span><span class="cn">PHP</span> <span class="op">&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="cn">PHP_VERSION</span> <span class="kw">?&gt;</span> <span class="op">|</span> Host<span class="ot">:</span> <span class="op">&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="fu">htmlspecialchars</span>(<span class="va">$_SERVER</span>[<span class="st">&#39;SERVER_NAME&#39;</span>] <span class="op">??</span> <span class="st">&#39;doc.gold.ac.uk&#39;</span><span class="ot">,</span> <span class="cn">ENT_QUOTES</span><span class="ot">,</span> <span class="st">&#39;UTF-8&#39;</span>) <span class="kw">?&gt;</span> <span class="op">|</span> <span class="cn">RAM</span><span class="ot">:</span> <span class="op">&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="fu">round</span>(<span class="fu">memory_get_peak_usage</span>(<span class="kw">true</span>) <span class="op">/</span> <span class="dv">1024</span>) <span class="kw">?&gt;</span> <span class="cn">KB</span><span class="op">&lt;/</span>span<span class="op">&gt;</span></span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span><span class="fu">header</span><span class="op">&gt;</span></span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>div <span class="kw">class</span><span class="op">=</span><span class="st">&quot;grid&quot;</span><span class="op">&gt;</span></span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;!--</span> <span class="cn">CARD</span> <span class="dv">1</span><span class="ot">:</span> <span class="fu">HASH</span><span class="ot">,</span> <span class="cn">BCRYPT</span> <span class="op">&amp;</span> <span class="cn">TOKEN</span> <span class="bu">GENERATOR</span> <span class="op">-</span>-&gt;</span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>div <span class="kw">class</span><span class="op">=</span><span class="st">&quot;card&quot;</span><span class="op">&gt;</span></span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>h2<span class="op">&gt;</span><span class="fl">1.</span> <span class="fu">Hash</span><span class="ot">,</span> Bcrypt <span class="op">&amp;</span>amp<span class="ot">;</span> Token <span class="bu">Generator</span><span class="op">&lt;/</span>h2<span class="op">&gt;</span></span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>p <span class="kw">class</span><span class="op">=</span><span class="st">&quot;desc&quot;</span><span class="op">&gt;</span>Compares fast <span class="cn">SHA</span><span class="op">-</span><span class="dv">256</span> digests against salted bcrypt password hashes<span class="op">.&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>form method<span class="op">=</span><span class="st">&quot;POST&quot;</span><span class="op">&gt;</span></span>
+<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>input type<span class="op">=</span><span class="st">&quot;hidden&quot;</span> name<span class="op">=</span><span class="st">&quot;tool&quot;</span> value<span class="op">=</span><span class="st">&quot;hash&quot;</span><span class="op">&gt;</span></span>
+<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>input type<span class="op">=</span><span class="st">&quot;text&quot;</span> name<span class="op">=</span><span class="st">&quot;text&quot;</span> placeholder<span class="op">=</span><span class="st">&quot;Enter string or password...&quot;</span> value<span class="op">=</span><span class="st">&quot;&lt;?= htmlspecialchars(</span><span class="va">$_POST</span>[<span class="er">&#39;</span><span class="st">text&#39;] ?? &#39;&#39;, ENT_QUOTES, &#39;UTF-8&#39;) ?&gt;&quot;</span> required<span class="op">&gt;</span></span>
+<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>button type<span class="op">=</span><span class="st">&quot;submit&quot;</span> style<span class="op">=</span><span class="st">&quot;margin-top:8px;&quot;</span><span class="op">&gt;</span>Generate Hashes<span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;/</span>form<span class="op">&gt;</span></span>
+<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span><span class="ot">?</span>php <span class="cf">if</span> (<span class="va">$tool</span> <span class="op">===</span> <span class="st">&#39;hash&#39;</span>)<span class="ot">:</span> <span class="kw">?&gt;</span></span>
+<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>pre<span class="op">&gt;</span><span class="cn">SHA</span><span class="op">-</span><span class="dv">256</span><span class="ot">:</span> <span class="op">&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="fu">htmlspecialchars</span>(<span class="va">$out</span>[<span class="st">&#39;sha256&#39;</span>]<span class="ot">,</span> <span class="cn">ENT_QUOTES</span><span class="ot">,</span> <span class="st">&#39;UTF-8&#39;</span>) <span class="kw">?&gt;</span></span>
+<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a>Bcrypt<span class="ot">:</span>  <span class="op">&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="fu">htmlspecialchars</span>(<span class="va">$out</span>[<span class="st">&#39;bcrypt&#39;</span>]<span class="ot">,</span> <span class="cn">ENT_QUOTES</span><span class="ot">,</span> <span class="st">&#39;UTF-8&#39;</span>) <span class="kw">?&gt;</span></span>
+<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a>Token<span class="ot">:</span>   <span class="op">&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="fu">htmlspecialchars</span>(<span class="va">$out</span>[<span class="st">&#39;token&#39;</span>]<span class="ot">,</span> <span class="cn">ENT_QUOTES</span><span class="ot">,</span> <span class="st">&#39;UTF-8&#39;</span>) <span class="kw">?&gt;</span><span class="op">&lt;/</span>pre<span class="op">&gt;</span></span>
+<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span><span class="ot">?</span>php <span class="cf">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></span>
+<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;!--</span> <span class="cn">CARD</span> <span class="dv">2</span><span class="ot">:</span> <span class="cn">JSON</span> <span class="cn">VALIDATOR</span> <span class="op">&amp;</span> <span class="cn">FORMATTER</span> <span class="op">-</span>-&gt;</span>
+<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>div <span class="kw">class</span><span class="op">=</span><span class="st">&quot;card&quot;</span><span class="op">&gt;</span></span>
+<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>h2<span class="op">&gt;</span><span class="fl">2.</span> <span class="cn">JSON</span> Validator <span class="op">&amp;</span>amp<span class="ot">;</span> Formatter (<span class="cn">PHP</span> <span class="fl">8.3</span>)<span class="op">&lt;/</span>h2<span class="op">&gt;</span></span>
+<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>p <span class="kw">class</span><span class="op">=</span><span class="st">&quot;desc&quot;</span><span class="op">&gt;</span>Validates raw <span class="cn">JSON</span> syntax using <span class="op">&lt;</span>code<span class="op">&gt;</span><span class="fu">json_validate</span>()<span class="op">&lt;/</span>code<span class="op">&gt;</span> <span class="op">and</span> pretty<span class="op">-</span>prints it<span class="op">.&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>form method<span class="op">=</span><span class="st">&quot;POST&quot;</span><span class="op">&gt;</span></span>
+<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>input type<span class="op">=</span><span class="st">&quot;hidden&quot;</span> name<span class="op">=</span><span class="st">&quot;tool&quot;</span> value<span class="op">=</span><span class="st">&quot;json&quot;</span><span class="op">&gt;</span></span>
+<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>textarea name<span class="op">=</span><span class="st">&quot;payload&quot;</span> rows<span class="op">=</span><span class="st">&quot;3&quot;</span> placeholder<span class="op">=</span><span class="st">&#39;{&quot;user&quot;:&quot;ada&quot;,&quot;roles&quot;:[&quot;admin&quot;,&quot;editor&quot;]}&#39;</span> required<span class="op">&gt;&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="fu">htmlspecialchars</span>(<span class="va">$_POST</span>[<span class="st">&#39;payload&#39;</span>] <span class="op">??</span> <span class="st">&#39;&#39;</span><span class="ot">,</span> <span class="cn">ENT_QUOTES</span><span class="ot">,</span> <span class="st">&#39;UTF-8&#39;</span>) <span class="kw">?&gt;</span><span class="op">&lt;/</span>textarea<span class="op">&gt;</span></span>
+<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>button type<span class="op">=</span><span class="st">&quot;submit&quot;</span> style<span class="op">=</span><span class="st">&quot;margin-top:8px;&quot;</span><span class="op">&gt;</span>Validate <span class="op">&amp;</span>amp<span class="ot">;</span> Format<span class="op">&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;/</span>form<span class="op">&gt;</span></span>
+<span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span><span class="ot">?</span>php <span class="cf">if</span> (<span class="va">$tool</span> <span class="op">===</span> <span class="st">&#39;json&#39;</span>)<span class="ot">:</span> <span class="kw">?&gt;</span></span>
+<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a>      <span class="op">&lt;</span>pre<span class="op">&gt;</span>Status<span class="ot">:</span> <span class="op">&lt;</span><span class="ot">?</span><span class="op">=</span> <span class="fu">htmlspecialchars</span>(<span class="va">$out</span>[<span class="st">&#39;status&#39;</span>]<span class="ot">,</span> <span class="cn">ENT_QUOTES</span><span class="ot">,</span> <span class="st">&#39;UTF-8&#39;</span>) <span class="kw">?&gt;</span></span>
+<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?</span><span class="op">=</span> <span class="fu">htmlspecialchars</span>(<span class="va">$out</span>[<span class="st">&#39;pretty&#39;</span>]<span class="ot">,</span> <span class="cn">ENT_QUOTES</span><span class="ot">,</span> <span class="st">&#39;UTF-8&#39;</span>) <span class="kw">?&gt;</span><span class="op">&lt;/</span>pre<span class="op">&gt;</span></span>
+<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span><span class="ot">?</span>php <span class="cf">endif</span><span class="ot">;</span> <span class="kw">?&gt;</span></span>
+<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>body<span class="op">&gt;</span></span>
+<span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>html<span class="op">&gt;</span></span></code></pre></div>
+<h3 id="verification-reflection">Verification &amp; Reflection</h3>
+<p>Ensure the file is readable by the web server
+(<code>chmod 644 ~/public_html/lab7/toolbox.php</code>), then open
+<code>https://doc.gold.ac.uk/~yourusername/lab7/toolbox.php</code> in
+your browser and test both tools:</p>
+<ul>
+<li><p>Submit the same word twice into Card 1. Notice how the
+<strong>SHA-256</strong> digest remains identical every time, whereas
+the <strong>Bcrypt</strong> output changes on every submission because
+<code>password_hash()</code> generates a fresh cryptographic salt per
+call.</p></li>
+<li><p>Examine the short echo tag <code>&lt;?= ... ?&gt;</code>. It is a
+built-in shorthand for <code>&lt;?php echo ...; ?&gt;</code>.</p></li>
+</ul>
+<h2 id="step-2-expanding-the-hub-with-four-core-utilities">Step 2:
+Expanding the Hub with Four Core Utilities</h2>
+<p>We will now add four additional utilities that showcase PHP’s
+built-in string, date, networking, and regular expression functions.</p>
+<p>For each tool below:</p>
+<ol type="1">
+<li><p>Paste the <strong>PHP Controller Block</strong> into the top
+<code>&lt;?php ... ?&gt;</code> section of <code>toolbox.php</code>
+(above the <code>?&gt;</code> closing tag).</p></li>
+<li><p>Paste the <strong>HTML Card Block</strong> inside
+<code>&lt;div class=&quot;grid&quot;&gt;...&lt;/div&gt;</code>.</p></li>
+</ol>
+<h3 id="tool-3-base64-url-codec">Tool 3: Base64 &amp; URL Codec</h3>
+<p>Web applications frequently encode binary data or JSON payloads into
+URL-safe strings (such as the first segment of a Flask session cookie).
+Note the use of PHP 8’s <strong>named argument</strong>
+<code>strict: true</code> in <code>base64_decode()</code>, which rejects
+strings containing characters outside the Base64 alphabet, and
+<code>mb_check_encoding()</code>, which verifies that the decoded bytes
+form valid printable UTF-8 text before displaying them.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">// --- TOOL 3: BASE64 &amp; URL CODEC (Paste in top PHP block) ---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="va">$tool</span> <span class="op">===</span> <span class="st">&#39;codec&#39;</span>) {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">$s</span> <span class="op">=</span> <span class="va">$_POST</span>[<span class="st">&#39;str&#39;</span>] <span class="op">??</span> <span class="st">&#39;&#39;</span><span class="ot">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">$out</span>[<span class="st">&#39;b64_enc&#39;</span>] <span class="op">=</span> <span class="fu">base64_encode</span>(<span class="va">$s</span>)<span class="ot">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">$decoded</span> <span class="op">=</span> <span class="fu">base64_decode</span>(<span class="va">$s</span><span class="ot">,</span> strict<span class="ot">:</span> <span class="kw">true</span>)<span class="ot">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">$out</span>[<span class="st">&#39;b64_dec&#39;</span>] <span class="op">=</span> (<span class="va">$decoded</span> <span class="op">!==</span> <span class="kw">false</span> <span class="op">&amp;&amp;</span> <span class="fu">mb_check_encoding</span>(<span class="va">$decoded</span><span class="ot">,</span> <span class="st">&#39;UTF-8&#39;</span>))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="ot">?</span> <span class="va">$decoded</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="ot">:</span> <span class="st">&#39;(Input is not valid UTF-8 Base64)&#39;</span><span class="ot">;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">$out</span>[<span class="st">&#39;url_enc&#39;</span>] <span class="op">=</span> <span class="fu">rawurlencode</span>(<span class="va">$s</span>)<span class="ot">;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- CARD 3: BASE64 &amp; URL CODEC (Paste inside &lt;div class=&quot;grid&quot;&gt;) --&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;card&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span>3. Base64 <span class="dv">&amp;amp;</span> URL Codec<span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;desc&quot;</span><span class="dt">&gt;</span>Encodes and strictly decodes Base64 payloads and RFC 3986 URL strings.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> method</span><span class="op">=</span><span class="st">&quot;POST&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;hidden&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;tool&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;codec&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;str&quot;</span><span class="ot"> placeholder</span><span class="op">=</span><span class="st">&quot;Enter text or Base64 payload...&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;</span><span class="er">&lt;</span><span class="st">?= htmlspecialchars($_POST[&#39;str&#39;] ?? &#39;&#39;, ENT_QUOTES, &#39;UTF-8&#39;) ?&gt;&quot;</span><span class="ot"> required</span><span class="dt">&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;submit&quot;</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;margin-top:8px;&quot;</span><span class="dt">&gt;</span>Encode / Decode<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;?</span><span class="co">php if ($tool === &#39;codec&#39;): ?&gt;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">pre</span><span class="dt">&gt;</span>Base64 Enc: <span class="er">&lt;?</span><span class="co">= htmlspecialchars($out[&#39;b64_enc&#39;], ENT_QUOTES, &#39;UTF-8&#39;) ?&gt;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>Base64 Dec: <span class="er">&lt;?</span><span class="co">= htmlspecialchars($out[&#39;b64_dec&#39;], ENT_QUOTES, &#39;UTF-8&#39;) ?&gt;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>URL Enc:    <span class="er">&lt;?</span><span class="co">= htmlspecialchars($out[&#39;url_enc&#39;], ENT_QUOTES, &#39;UTF-8&#39;) ?&gt;</span><span class="dt">&lt;/</span><span class="kw">pre</span><span class="dt">&gt;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;?</span><span class="co">php endif; ?&gt;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="tool-4-natural-language-date-unix-epoch-converter">Tool 4:
+Natural-Language Date &amp; Unix Epoch Converter</h3>
+<p>PHP’s <code>strtotime()</code> function includes a C-level parser for
+English relative date expressions (such as <code>&quot;next Monday&quot;</code>,
+<code>&quot;+3 weeks&quot;</code>, or <code>&quot;last Friday 17:00&quot;</code>),
+converting them into Unix timestamps (seconds elapsed since 1 January
+1970 00:00:00 UTC).</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">// --- TOOL 4: NATURAL-LANGUAGE DATE &amp; UNIX EPOCH CONVERTER (Paste in top PHP block) ---</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="va">$tool</span> <span class="op">===</span> <span class="st">&#39;date&#39;</span>) {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">$expr</span> <span class="op">=</span> <span class="fu">trim</span>(<span class="va">$_POST</span>[<span class="st">&#39;expr&#39;</span>] <span class="op">??</span> <span class="st">&#39;now&#39;</span>)<span class="ot">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// If input is purely numeric, treat it as a Unix epoch timestamp; otherwise parse English text</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">$ts</span> <span class="op">=</span> <span class="fu">is_numeric</span>(<span class="va">$expr</span>) <span class="ot">?</span> (<span class="dt">int</span>) <span class="va">$expr</span> <span class="ot">:</span> <span class="fu">strtotime</span>(<span class="va">$expr</span>)<span class="ot">;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="va">$ts</span> <span class="op">!==</span> <span class="kw">false</span>) {</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">$out</span>[<span class="st">&#39;unix&#39;</span>]  <span class="op">=</span> <span class="dt">(string)</span> <span class="va">$ts</span><span class="ot">;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">$out</span>[<span class="st">&#39;human&#39;</span>] <span class="op">=</span> <span class="fu">date</span>(<span class="st">&#39;l, jS F Y H:i:s T&#39;</span><span class="ot">,</span> <span class="va">$ts</span>)<span class="ot">;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">$out</span>[<span class="st">&#39;iso&#39;</span>]   <span class="op">=</span> <span class="fu">date</span>(<span class="st">&#39;c&#39;</span><span class="ot">,</span> <span class="va">$ts</span>)<span class="ot">;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">$out</span>[<span class="st">&#39;error&#39;</span>] <span class="op">=</span> <span class="st">&#39;Could not parse date expression.&#39;</span><span class="ot">;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- CARD 4: DATE &amp; UNIX EPOCH CONVERTER (Paste inside &lt;div class=&quot;grid&quot;&gt;) --&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;card&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span>4. Date <span class="dv">&amp;amp;</span> Unix Epoch Converter<span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;desc&quot;</span><span class="dt">&gt;</span>Converts relative English phrases or Unix timestamps into ISO-8601 dates.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> method</span><span class="op">=</span><span class="st">&quot;POST&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;hidden&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;tool&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;date&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;expr&quot;</span><span class="ot"> placeholder</span><span class="op">=</span><span class="st">&quot;e.g. next Tuesday, +3 weeks, or 1794825600&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;</span><span class="er">&lt;</span><span class="st">?= htmlspecialchars($_POST[&#39;expr&#39;] ?? &#39;&#39;, ENT_QUOTES, &#39;UTF-8&#39;) ?&gt;&quot;</span><span class="ot"> required</span><span class="dt">&gt;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;submit&quot;</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;margin-top:8px;&quot;</span><span class="dt">&gt;</span>Convert Timestamp<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;?</span><span class="co">php if ($tool === &#39;date&#39;): ?&gt;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">pre</span><span class="dt">&gt;</span><span class="er">&lt;?</span><span class="co">= isset($out[&#39;error&#39;])</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">        ? htmlspecialchars($out[&#39;error&#39;], ENT_QUOTES, &#39;UTF-8&#39;)</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">        : htmlspecialchars(&quot;Unix:  {$out[&#39;unix&#39;]}\nHuman: {$out[&#39;human&#39;]}\nISO:   {$out[&#39;iso&#39;]}&quot;, ENT_QUOTES, &#39;UTF-8&#39;) ?&gt;</span><span class="dt">&lt;/</span><span class="kw">pre</span><span class="dt">&gt;</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;?</span><span class="co">php endif; ?&gt;</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="tool-5-safe-dns-ip-inspector-ssrf-defense-in-php">Tool 5: Safe
+DNS &amp; IP Inspector (SSRF Defense in PHP)</h3>
+<p>In Week 6, we used Python’s <code>ipaddress</code> module to prevent
+<strong>Server-Side Request Forgery (SSRF)</strong> against loopback
+(<code>127.0.0.1</code>), private networks (<code>10.x.x.x</code>,
+<code>192.168.x.x</code>), and cloud metadata endpoints
+(<code>169.254.169.254</code>). In PHP, <code>filter_var()</code>
+provides built-in bitmask flags
+(<code>FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE</code>) to
+enforce the exact same boundary check in a single expression.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">// --- TOOL 5: SAFE DNS &amp; IP INSPECTOR (Paste in top PHP block) ---</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="va">$tool</span> <span class="op">===</span> <span class="st">&#39;net&#39;</span>) {</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Sanitize hostname to allow only valid DNS characters</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">$host</span> <span class="op">=</span> <span class="fu">preg_replace</span>(<span class="st">&#39;/[^a-zA-Z0-9.-]/&#39;</span><span class="ot">,</span> <span class="st">&#39;&#39;</span><span class="ot">,</span> <span class="va">$_POST</span>[<span class="st">&#39;host&#39;</span>] <span class="op">??</span> <span class="st">&#39;&#39;</span>)<span class="ot">;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">$ip</span>   <span class="op">=</span> <span class="fu">gethostbyname</span>(<span class="va">$host</span>)<span class="ot">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Validate that the resolved IPv4 address is strictly public</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">$safe</span> <span class="op">=</span> <span class="fu">filter_var</span>(</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">$ip</span><span class="ot">,</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="cn">FILTER_VALIDATE_IP</span><span class="ot">,</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="cn">FILTER_FLAG_NO_PRIV_RANGE</span> <span class="op">|</span> <span class="cn">FILTER_FLAG_NO_RES_RANGE</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    )<span class="ot">;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="va">$safe</span> <span class="op">!==</span> <span class="kw">false</span>) {</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">$rdns</span> <span class="op">=</span> <span class="fu">gethostbyaddr</span>(<span class="va">$safe</span>)<span class="ot">;</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">$out</span>[<span class="st">&#39;res&#39;</span>] <span class="op">=</span> <span class="st">&quot;Host: </span><span class="va">$host</span><span class="sc">\n</span><span class="st">IPv4: </span><span class="va">$safe</span><span class="sc">\n</span><span class="st">rDNS: </span><span class="va">$rdns</span><span class="st">&quot;</span><span class="ot">;</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">$out</span>[<span class="st">&#39;res&#39;</span>] <span class="op">=</span> <span class="st">&quot;Blocked: Private, loopback, reserved, or unresolvable address (</span><span class="va">$ip</span><span class="st">).&quot;</span><span class="ot">;</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- CARD 5: SAFE DNS &amp; IP INSPECTOR (Paste inside &lt;div class=&quot;grid&quot;&gt;) --&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;card&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span>5. Safe DNS <span class="dv">&amp;amp;</span> IP Inspector<span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;desc&quot;</span><span class="dt">&gt;</span>Resolves hostnames and blocks private/loopback ranges using <span class="dt">&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>filter_var()<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;</span>.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> method</span><span class="op">=</span><span class="st">&quot;POST&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;hidden&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;tool&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;net&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;host&quot;</span><span class="ot"> placeholder</span><span class="op">=</span><span class="st">&quot;e.g. gold.ac.uk, 8.8.8.8, or 127.0.0.1&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;</span><span class="er">&lt;</span><span class="st">?= htmlspecialchars($_POST[&#39;host&#39;] ?? &#39;&#39;, ENT_QUOTES, &#39;UTF-8&#39;) ?&gt;&quot;</span><span class="ot"> required</span><span class="dt">&gt;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;submit&quot;</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;margin-top:8px;&quot;</span><span class="dt">&gt;</span>Inspect Host<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;?</span><span class="co">php if ($tool === &#39;net&#39;): ?&gt;</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">pre</span><span class="dt">&gt;</span><span class="er">&lt;?</span><span class="co">= htmlspecialchars($out[&#39;res&#39;], ENT_QUOTES, &#39;UTF-8&#39;) ?&gt;</span><span class="dt">&lt;/</span><span class="kw">pre</span><span class="dt">&gt;</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;?</span><span class="co">php endif; ?&gt;</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="tool-6-multibyte-text-analyzer-url-slugifier">Tool 6: Multibyte
+Text Analyzer &amp; URL Slugifier</h3>
+<p>Standard C-style string functions like <code>strlen()</code> count
+<strong>bytes</strong> rather than characters, meaning a multi-byte
+UTF-8 character (such as <code>£</code> or <code>é</code>) is counted as
+2 bytes. PHP’s <code>mb_strlen()</code> (Multibyte String length)
+accurately counts UTF-8 code points. Meanwhile,
+<code>preg_replace()</code> uses Perl-Compatible Regular Expressions
+(PCRE) to convert arbitrary titles into clean, hyphenated URL slugs.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">// --- TOOL 6: MULTIBYTE TEXT ANALYZER &amp; SLUGIFIER (Paste in top PHP block) ---</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="va">$tool</span> <span class="op">===</span> <span class="st">&#39;text&#39;</span>) {</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">$txt</span> <span class="op">=</span> <span class="va">$_POST</span>[<span class="st">&#39;body&#39;</span>] <span class="op">??</span> <span class="st">&#39;&#39;</span><span class="ot">;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">$out</span>[<span class="st">&#39;words&#39;</span>] <span class="op">=</span> <span class="fu">str_word_count</span>(<span class="va">$txt</span>)<span class="ot">;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">$out</span>[<span class="st">&#39;bytes&#39;</span>] <span class="op">=</span> <span class="fu">strlen</span>(<span class="va">$txt</span>)<span class="ot">;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">$out</span>[<span class="st">&#39;chars&#39;</span>] <span class="op">=</span> <span class="fu">mb_strlen</span>(<span class="va">$txt</span><span class="ot">,</span> <span class="st">&#39;UTF-8&#39;</span>)<span class="ot">;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">$out</span>[<span class="st">&#39;slug&#39;</span>]  <span class="op">=</span> <span class="fu">trim</span>(<span class="fu">preg_replace</span>(<span class="st">&#39;/[^a-z0-9]+/&#39;</span><span class="ot">,</span> <span class="st">&#39;-&#39;</span><span class="ot">,</span> <span class="fu">strtolower</span>(<span class="va">$txt</span>))<span class="ot">,</span> <span class="st">&#39;-&#39;</span>)<span class="ot">;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- CARD 6: TEXT ANALYZER &amp; SLUGIFIER (Paste inside &lt;div class=&quot;grid&quot;&gt;) --&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;card&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span>6. Text Analyzer <span class="dv">&amp;amp;</span> URL Slugifier<span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;desc&quot;</span><span class="dt">&gt;</span>Compares byte length vs UTF-8 character count and generates clean URL slugs.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> method</span><span class="op">=</span><span class="st">&quot;POST&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;hidden&quot;</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;tool&quot;</span><span class="ot"> value</span><span class="op">=</span><span class="st">&quot;text&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">textarea</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;body&quot;</span><span class="ot"> rows</span><span class="op">=</span><span class="st">&quot;3&quot;</span><span class="ot"> placeholder</span><span class="op">=</span><span class="st">&quot;e.g. Café Price: £4.50 — Special Offer!&quot;</span><span class="ot"> required</span><span class="dt">&gt;</span>&lt;?= htmlspecialchars($_POST[&#39;body&#39;] ?? &#39;&#39;, ENT_QUOTES, &#39;UTF-8&#39;) ?&gt;<span class="dt">&lt;/</span><span class="kw">textarea</span><span class="dt">&gt;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">button</span><span class="ot"> type</span><span class="op">=</span><span class="st">&quot;submit&quot;</span><span class="ot"> style</span><span class="op">=</span><span class="st">&quot;margin-top:8px;&quot;</span><span class="dt">&gt;</span>Analyze Text<span class="dt">&lt;/</span><span class="kw">button</span><span class="dt">&gt;</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;?</span><span class="co">php if ($tool === &#39;text&#39;): ?&gt;</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">pre</span><span class="dt">&gt;</span>Words: <span class="er">&lt;?</span><span class="co">= $out[&#39;words&#39;] ?&gt;</span> | UTF-8 Chars: <span class="er">&lt;?</span><span class="co">= $out[&#39;chars&#39;] ?&gt;</span> | Raw Bytes: <span class="er">&lt;?</span><span class="co">= $out[&#39;bytes&#39;] ?&gt;</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>Slug:  <span class="er">&lt;?</span><span class="co">= htmlspecialchars($out[&#39;slug&#39;], ENT_QUOTES, &#39;UTF-8&#39;) ?&gt;</span><span class="dt">&lt;/</span><span class="kw">pre</span><span class="dt">&gt;</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="er">&lt;?</span><span class="co">php endif; ?&gt;</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
+<h2 id="step-3-independent-expansion-tasks-with-implementation-guides">Step
+3: Independent Expansion Tasks (With Implementation Guides)</h2>
+<p>Once your six core utilities are working on
+<code>doc.gold.ac.uk/~yourusername/lab7/toolbox.php</code>, extend your
+page by implementing at least <strong>two</strong> of the following
+features. Each task includes architectural tips and starter code to
+guide your implementation.</p>
+<h3 id="task-a-session-backed-activity-log-_session">Task A:
+Session-Backed Activity Log (<code>$_SESSION</code>)</h3>
+<p>Because PHP uses a shared-nothing architecture, variables like
+<code>$out</code> are destroyed at the end of every HTTP request. To
+remember which tools a user has run across multiple form submissions, we
+use PHP’s built-in session manager.</p>
+<p><strong>How It Works &amp; Implementation Tips:</strong></p>
+<ol type="1">
+<li><p>Call <code>session_start();</code> at the very top of
+<code>toolbox.php</code> (right after
+<code>declare(strict_types=1);</code> and <strong>before</strong> any
+HTML is sent). PHP will automatically generate a <code>PHPSESSID</code>
+cookie and store session state on the server.</p></li>
+<li><p>Initialize an array in <code>$_SESSION[&#39;history&#39;]</code> if it
+does not yet exist.</p></li>
+<li><p>Whenever <code>$tool !== &#39;&#39;</code>, append a timestamped entry to
+<code>$_SESSION[&#39;history&#39;]</code> and keep only the latest 5 entries
+using <code>array_slice()</code>.</p></li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 1. Place right after declare(strict_types=1);</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">session_start</span>()<span class="ot">;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">isset</span>(<span class="va">$_SESSION</span>[<span class="st">&#39;history&#39;</span>])) {</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">$_SESSION</span>[<span class="st">&#39;history&#39;</span>] <span class="op">=</span> []<span class="ot">;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">// 2. Place right after $tool = $_POST[&#39;tool&#39;] ?? &#39;&#39;;</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="va">$tool</span> <span class="op">!==</span> <span class="st">&#39;&#39;</span>) {</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">array_unshift</span>(<span class="va">$_SESSION</span>[<span class="st">&#39;history&#39;</span>]<span class="ot">,</span> <span class="fu">strtoupper</span>(<span class="va">$tool</span>) <span class="op">.</span> <span class="st">&#39; executed at &#39;</span> <span class="op">.</span> <span class="fu">date</span>(<span class="st">&#39;H:i:s&#39;</span>))<span class="ot">;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">$_SESSION</span>[<span class="st">&#39;history&#39;</span>] <span class="op">=</span> <span class="fu">array_slice</span>(<span class="va">$_SESSION</span>[<span class="st">&#39;history&#39;</span>]<span class="ot">,</span> <span class="dv">0</span><span class="ot">,</span> <span class="dv">5</span>)<span class="ot">;</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>To display the history bar, add a
+<code>&lt;div class=&quot;card&quot; style=&quot;margin-bottom: 20px;&quot;&gt;</code> above
+<code>&lt;div class=&quot;grid&quot;&gt;</code> and loop over
+<code>$_SESSION[&#39;history&#39;]</code> using
+<code>foreach ($_SESSION[&#39;history&#39;] as $item)</code>. Challenge: Add a
+small form with <code>value=&quot;clear_history&quot;</code> that calls
+<code>$_SESSION[&#39;history&#39;] = [];</code>.</p>
+<h3 id="task-b-fuzzy-keyword-spellchecker-levenshtein">Task B: Fuzzy
+Keyword Spellchecker (<code>levenshtein()</code>)</h3>
+<p>The Levenshtein distance between two strings is the minimum number of
+single-character edits (insertions, deletions, or substitutions)
+required to transform one word into another. Unlike Python or JavaScript
+(which require third-party packages or manual dynamic programming
+matrices), PHP includes <code>levenshtein()</code> in its standard C
+library.</p>
+<p><strong>How It Works &amp; Implementation Tips:</strong></p>
+<ol type="1">
+<li><p>Create a 7th card with
+<code>&lt;input type=&quot;hidden&quot; name=&quot;tool&quot; value=&quot;spell&quot;&gt;</code> and a
+text input named <code>term</code>.</p></li>
+<li><p>In your top PHP block, iterate over a dictionary of computing
+terms, compute <code>levenshtein(strtolower($term), $word)</code> for
+each entry, and track the word with the lowest edit distance:</p></li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="va">$tool</span> <span class="op">===</span> <span class="st">&#39;spell&#39;</span>) {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">$term</span> <span class="op">=</span> <span class="fu">strtolower</span>(<span class="fu">trim</span>(<span class="va">$_POST</span>[<span class="st">&#39;term&#39;</span>] <span class="op">??</span> <span class="st">&#39;&#39;</span>))<span class="ot">;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">$dictionary</span> <span class="op">=</span> [</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;authentication&#39;</span><span class="ot">,</span> <span class="st">&#39;authorization&#39;</span><span class="ot">,</span> <span class="st">&#39;bytecode&#39;</span><span class="ot">,</span> <span class="st">&#39;cookie&#39;</span><span class="ot">,</span> <span class="st">&#39;cryptography&#39;</span><span class="ot">,</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;database&#39;</span><span class="ot">,</span> <span class="st">&#39;decorator&#39;</span><span class="ot">,</span> <span class="st">&#39;equirectangular&#39;</span><span class="ot">,</span> <span class="st">&#39;framework&#39;</span><span class="ot">,</span> <span class="st">&#39;gateway&#39;</span><span class="ot">,</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;idempotent&#39;</span><span class="ot">,</span> <span class="st">&#39;middleware&#39;</span><span class="ot">,</span> <span class="st">&#39;opcache&#39;</span><span class="ot">,</span> <span class="st">&#39;parameterized&#39;</span><span class="ot">,</span> <span class="st">&#39;sqlite&#39;</span><span class="ot">,</span> <span class="st">&#39;webhook&#39;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    ]<span class="ot">;</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">$shortest</span> <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="ot">;</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">$closest</span>  <span class="op">=</span> <span class="st">&#39;&#39;</span><span class="ot">;</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">foreach</span> (<span class="va">$dictionary</span> <span class="kw">as</span> <span class="va">$word</span>) {</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">$dist</span> <span class="op">=</span> <span class="fu">levenshtein</span>(<span class="va">$term</span><span class="ot">,</span> <span class="va">$word</span>)<span class="ot">;</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="va">$dist</span> <span class="op">===</span> <span class="dv">0</span>) {</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>            <span class="va">$closest</span>  <span class="op">=</span> <span class="va">$word</span><span class="ot">;</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>            <span class="va">$shortest</span> <span class="op">=</span> <span class="dv">0</span><span class="ot">;</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span><span class="ot">;</span> <span class="co">// Exact match found</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="va">$shortest</span> <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">||</span> <span class="va">$dist</span> <span class="op">&lt;</span> <span class="va">$shortest</span>) {</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>            <span class="va">$closest</span>  <span class="op">=</span> <span class="va">$word</span><span class="ot">;</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>            <span class="va">$shortest</span> <span class="op">=</span> <span class="va">$dist</span><span class="ot">;</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    <span class="va">$out</span>[<span class="st">&#39;spell_result&#39;</span>] <span class="op">=</span> (<span class="va">$shortest</span> <span class="op">===</span> <span class="dv">0</span>)</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>        <span class="ot">?</span> <span class="st">&quot;Exact match: &#39;</span><span class="va">$closest</span><span class="st">&#39;&quot;</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>        <span class="ot">:</span> <span class="st">&quot;Did you mean &#39;</span><span class="va">$closest</span><span class="st">&#39;? (Edit distance: </span><span class="va">$shortest</span><span class="st">)&quot;</span><span class="ot">;</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h3 id="task-c-multipart-file-sha-256-checksummer-_files-hash_file">Task
+C: Multipart File SHA-256 Checksummer (<code>$_FILES</code> &amp;
+<code>hash_file()</code>)</h3>
+<p>When a user uploads a file via an HTML form with
+<code>enctype=&quot;multipart/form-data&quot;</code>, PHP intercepts the incoming
+stream, writes the file to a temporary directory on the server, and
+populates the <code>$_FILES</code> superglobal array before your script
+starts.</p>
+<p><strong>How It Works &amp; Implementation Tips:</strong></p>
+<ol type="1">
+<li><p>In your HTML card, the <code>&lt;form&gt;</code> tag
+<strong>must</strong> include
+<code>method=&quot;POST&quot; enctype=&quot;multipart/form-data&quot;</code>. Without
+<code>enctype</code>, the browser only sends the filename string rather
+than the file contents.</p></li>
+<li><p>Check that
+<code>$_FILES[&#39;upload&#39;][&#39;error&#39;] === UPLOAD_ERR_OK</code> before reading
+<code>$_FILES[&#39;upload&#39;][&#39;tmp_name&#39;]</code>.</p></li>
+<li><p>Use <code>hash_file(&#39;sha256&#39;, $tmpPath)</code> rather than
+<code>file_get_contents()</code> so PHP streams the file in small chunks
+without exhausting RAM.</p></li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="va">$tool</span> <span class="op">===</span> <span class="st">&#39;filehash&#39;</span> <span class="op">&amp;&amp;</span> <span class="kw">isset</span>(<span class="va">$_FILES</span>[<span class="st">&#39;upload&#39;</span>])) {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="va">$_FILES</span>[<span class="st">&#39;upload&#39;</span>][<span class="st">&#39;error&#39;</span>] <span class="op">===</span> <span class="cn">UPLOAD_ERR_OK</span>) {</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">$tmp</span>  <span class="op">=</span> <span class="va">$_FILES</span>[<span class="st">&#39;upload&#39;</span>][<span class="st">&#39;tmp_name&#39;</span>]<span class="ot">;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">$name</span> <span class="op">=</span> <span class="fu">basename</span>(<span class="va">$_FILES</span>[<span class="st">&#39;upload&#39;</span>][<span class="st">&#39;name&#39;</span>])<span class="ot">;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">$size</span> <span class="op">=</span> <span class="va">$_FILES</span>[<span class="st">&#39;upload&#39;</span>][<span class="st">&#39;size&#39;</span>]<span class="ot">;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">$sha</span>  <span class="op">=</span> <span class="fu">hash_file</span>(<span class="st">&#39;sha256&#39;</span><span class="ot">,</span> <span class="va">$tmp</span>)<span class="ot">;</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">$out</span>[<span class="st">&#39;file_info&#39;</span>] <span class="op">=</span> <span class="st">&quot;File: </span><span class="va">$name</span><span class="st"> (</span><span class="va">$size</span><span class="st"> bytes)</span><span class="sc">\n</span><span class="st">SHA-256: </span><span class="va">$sha</span><span class="st">&quot;</span><span class="ot">;</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">$out</span>[<span class="st">&#39;file_info&#39;</span>] <span class="op">=</span> <span class="st">&quot;Upload error code: &quot;</span> <span class="op">.</span> <span class="va">$_FILES</span>[<span class="st">&#39;upload&#39;</span>][<span class="st">&#39;error&#39;</span>]<span class="ot">;</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h3 id="task-d-php-syntax-highlighter-highlight_string">Task D: PHP
+Syntax Highlighter (<code>highlight_string()</code>)</h3>
+<p>PHP exposes its internal Zend lexical scanner via
+<code>highlight_string()</code>. When passed a string containing
+<code>&lt;?php ... ?&gt;</code> code and <code>return: true</code>, it
+returns HTML <code>&lt;span&gt;</code> elements colored according to
+token type (keywords, strings, variables, comments).</p>
+<p><strong>How It Works &amp; Implementation Tips:</strong></p>
+<ol type="1">
+<li><p>Note that because <code>highlight_string()</code> intentionally
+returns safe HTML <code>&lt;span&gt;</code> tags, this is the
+<strong>one</strong> place where you render the result directly without
+wrapping the output in <code>htmlspecialchars()</code>.</p></li>
+<li><p>If the user’s input does not start with <code>&lt;?php</code>,
+prepend <code>&quot;&lt;?php\n&quot;</code> before passing it to
+<code>highlight_string()</code> so the lexer activates tokenization
+mode:</p></li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode php"><code class="sourceCode php"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="va">$tool</span> <span class="op">===</span> <span class="st">&#39;highlight&#39;</span>) {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">$code</span> <span class="op">=</span> <span class="va">$_POST</span>[<span class="st">&#39;code&#39;</span>] <span class="op">??</span> <span class="st">&#39;&#39;</span><span class="ot">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span><span class="fu">str_starts_with</span>(<span class="fu">trim</span>(<span class="va">$code</span>)<span class="ot">,</span> <span class="st">&#39;&lt;?php&#39;</span>)) {</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">$code</span> <span class="op">=</span> <span class="st">&quot;&lt;?php</span><span class="sc">\n</span><span class="st">&quot;</span> <span class="op">.</span> <span class="va">$code</span><span class="ot">;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Returns colorized HTML &lt;code&gt;&lt;span&gt;...&lt;/span&gt;&lt;/code&gt;</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">$out</span>[<span class="st">&#39;highlighted_html&#39;</span>] <span class="op">=</span> <span class="fu">highlight_string</span>(<span class="va">$code</span><span class="ot">,</span> <span class="cf">return</span><span class="ot">:</span> <span class="kw">true</span>)<span class="ot">;</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>In your card template, wrap <code>$out[&#39;highlighted_html&#39;]</code>
+inside a light-background container
+(<code>&lt;div style=&quot;background:#f8fafc; padding:12px; border-radius:6px; overflow-x:auto;&quot;&gt;&lt;?= $out[&#39;highlighted_html&#39;] ?&gt;&lt;/div&gt;</code>)
+so the default syntax colors have high contrast.</p>
+<h2 id="pre-assessment-review-questions">Pre-Assessment Review
+Questions</h2>
+<p>Make sure you can answer these four questions before next week’s lab
+assessment:</p>
+<ol type="1">
+<li><p><strong>Output Escaping:</strong> Why must we wrap echoed
+<code>$_POST</code> or <code>$_GET</code> data in
+<code>htmlspecialchars($str, ENT_QUOTES, &#39;UTF-8&#39;)</code> in raw PHP,
+whereas we did not need to do so inside <code>{{ ... }}</code> in
+Flask’s Jinja2 templates?</p></li>
+<li><p><strong>Memory &amp; Performance:</strong> What is the difference
+between <code>json_validate($str)</code> (introduced in PHP 8.3) and
+<code>json_decode($str) !== null</code> when checking whether a large
+incoming payload is valid JSON?</p></li>
+<li><p><strong>SSRF Prevention:</strong> Which two bitmask flags passed
+to <code>filter_var($ip, FILTER_VALIDATE_IP, ...)</code> prevent a user
+from probing <code>127.0.0.1</code> or
+<code>192.168.1.1</code>?</p></li>
+<li><p><strong>Byte vs Character Length:</strong> Why does
+<code>strlen(&quot;£5&quot;)</code> return <code>3</code> while
+<code>mb_strlen(&quot;£5&quot;, &quot;UTF-8&quot;)</code> returns <code>2</code>?</p></li>
+</ol>
+</body>
+</html>

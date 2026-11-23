@@ -1,3 +1,5 @@
+import type { QuizQuestion } from './quizzes/types';
+
 const lastUpdated: Date = new Date(2026, 0, 13);
 
 const StaticAssets: Record<string, string> = {
@@ -37,13 +39,7 @@ const StaticAssets: Record<string, string> = {
 	W3SchoolsLogo: 'https://www.w3schools.com/favicon.ico'
 } as const;
 
-const QuizQuestions: Array<{
-	area: string;
-	question: string;
-	type: string;
-	options: string[];
-	answer: string;
-}> = [
+const QuizQuestions: QuizQuestion[] = [
 	// Design Principles
 	{
 		area: 'design-principles',

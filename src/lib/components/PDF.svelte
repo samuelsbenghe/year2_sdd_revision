@@ -4,10 +4,10 @@
 </script>
 
 <div class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-	<div class="h-[28rem] w-full bg-slate-100">
+	<div class="h-112 w-full bg-slate-100">
 		<iframe {title} {src} class="h-full w-full"></iframe>
 	</div>
-	<div class="flex gap-3 border-t border-slate-100 bg-slate-50/50 p-4">
+	<div class="flex flex-wrap gap-3 border-t border-slate-100 bg-slate-50/50 p-4">
 		<a
 			href={src}
 			download

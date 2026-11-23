@@ -1,145 +1,161 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.png';
-	import { BookOpen, ClipboardCheck, LayoutGrid, HomeIcon } from '@lucide/svelte';
+	import { BookOpen, ChevronDown, HomeIcon } from '@lucide/svelte';
+	import { resolve } from '$app/paths';
+	import type { Pathname } from '$app/types';
 	import { page } from '$app/state';
+	import type { Snippet } from 'svelte';
 	import { lastUpdated } from '$lib';
-	import { goto } from '$app/navigation';
+	import { dynamicWebLectureHref, dynamicWebLectures } from '$lib/dynamic-web';
+	import { modules } from '$lib/modules';
 
 	let { children } = $props();
 
-	let lecturesToggle = $state(false);
-	let manualOverride = $state(null as null | boolean);
+	type ResourceLink = { href: Pathname; label: string };
 
-	function toggleLectures() {
-		manualOverride = !lecturesToggle;
-		lecturesToggle = !lecturesToggle;
-		// navigate to lectures if not already there
-		if (manualOverride && !page.url.pathname.startsWith('/lectures')) {
-			goto('/lectures');
-		}
-	}
+	const sddLinks = [
+		{ href: '/sdd/lectures', label: 'Lectures' },
+		{ href: '/sdd/quizzes', label: 'Quizzes' },
+		{ href: '/sdd/tools', label: 'Tools' }
+	] as const;
 
-	const categories = [
-		{ href: '/lectures', label: 'Lectures', icon: BookOpen, id: 'lectures' },
-		{ href: '/quizzes', label: 'Quizzes', icon: ClipboardCheck, id: 'quizzes' },
-		{ href: '/tools', label: 'Tools', icon: LayoutGrid, id: 'tools' }
-	];
+	const dynamicWebLinks = [{ href: '/dynamic-web/quizzes', label: 'Quizzes' }] as const;
 
 	const weeks = [
-		{ href: '/lectures/week1', label: 'Week 1: Introduction' },
-		{ href: '/lectures/week2', label: 'Week 2: Module Coupling and Cohesion' },
-		{ href: '/lectures/week3', label: 'Week 3: Software Testing' },
-		{ href: '/lectures/week4', label: 'Week 4: Web Testing with JavaScript' },
-		{ href: '/lectures/week5', label: 'Week 5: User Testing' },
-		{ href: '/lectures/week6', label: 'Week 6: Version Control Systems' },
-		{ href: '/lectures/week7', label: 'Week 7: Robust and Secure Programming' },
-		{ href: '/lectures/week8', label: 'Week 8: Usability Testing' },
-		{ href: '/lectures/week9', label: 'Week 9: Comprehensive Revision' },
-		{ href: '/lectures/week10', label: 'Week 10: Final Lecture & Exam Prep' }
-	];
+		'Introduction',
+		'Module Coupling and Cohesion',
+		'Software Testing',
+		'Web Testing with JavaScript',
+		'User Testing',
+		'Version Control Systems',
+		'Robust and Secure Programming',
+		'Usability Testing',
+		'Comprehensive Revision',
+		'Final Lecture & Exam Prep'
+	].map((title, index) => ({
+		href: `/sdd/lectures/week${index + 1}` as Pathname,
+		label: `Week ${index + 1}: ${title}`
+	}));
 
-	$effect(() => {
-		const isLectureWeek = weeks.some((w) => page.url.pathname.startsWith(w.href)) || page.url.pathname === '/lectures';
+	const dynamicWebWeekLinks = dynamicWebLectures.map(({ week, title }) => ({
+		href: dynamicWebLectureHref(week),
+		label: `Week ${week}: ${title}`
+	}));
 
-		if (isLectureWeek) {
-			if (manualOverride === null) {
-				lecturesToggle = true;
-			} else {
-				lecturesToggle = manualOverride;
-			}
-		} else {
-			lecturesToggle = false;
-			manualOverride = null;
-		}
-	});
+	function isWithin(href: string) {
+		return page.url.pathname === href || page.url.pathname.startsWith(href + '/');
+	}
 </script>
+
+{#snippet resourceLinks(links: readonly ResourceLink[])}
+	{#each links as { href, label } (href)}
+		<li>
+			<a
+				href={resolve(href)}
+				aria-current={page.url.pathname === href ? 'page' : undefined}
+				class="block rounded-lg px-2 py-1 text-sm hover:bg-slate-800 hover:text-white data-[active=true]:bg-indigo-500/15 data-[active=true]:text-indigo-200 md:px-3 md:py-2"
+				data-active={isWithin(href)}
+			>
+				{label}
+			</a>
+		</li>
+	{/each}
+{/snippet}
+
+{#snippet resourceDropdown(label: string, open: boolean, content: Snippet)}
+	<li>
+		<details class="[&[open]>summary>svg]:rotate-180" {open}>
+			<summary class="flex cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-800 hover:text-white">
+				{label}
+				<ChevronDown class="size-4 shrink-0" />
+			</summary>
+			<ul class="ml-3 border-l border-slate-800 pl-2">
+				{@render content()}
+			</ul>
+		</details>
+	</li>
+{/snippet}
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="flex h-screen w-full">
-	<aside class="bg-linear-to-b hidden w-72 shrink-0 flex-col border-r border-slate-800/50 from-slate-900 via-slate-900 to-slate-950 text-slate-300 md:flex">
-		<!-- Logo/Brand Header -->
-		<div class="flex h-16 items-center gap-3 border-b border-slate-800/50 bg-slate-900/50 px-6 backdrop-blur-sm">
-			<div class="bg-linear-to-br flex h-8 w-8 items-center justify-center rounded-lg from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/25">
-				<BookOpen class="h-4 w-4 text-white" />
-			</div>
-			<span class="bg-linear-to-r from-white to-slate-300 bg-clip-text font-bold tracking-wide text-transparent">SDD Revision</span>
-		</div>
+<div class="flex h-dvh w-full flex-col md:flex-row">
+	<div class="bg-linear-to-b flex shrink-0 flex-col from-slate-900 to-slate-950 text-slate-300 md:w-72 md:border-r md:border-slate-800/50">
+		<a href={resolve('/')} class="flex items-center gap-3 border-b border-slate-800/50 px-4 py-3 md:h-16 md:px-6">
+			<span class="bg-linear-to-br grid size-8 place-items-center rounded-lg from-indigo-500 to-purple-600 text-white">
+				<BookOpen class="size-4" />
+			</span>
+			<span class="font-bold tracking-wide text-white">University Revision</span>
+		</a>
 
-		<nav class="flex-1 space-y-1 overflow-y-auto px-3 py-6">
-			<!-- Homepage -->
-			<a
-				href="/"
-				class={`group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200
-			${page.url.pathname === '/' ? 'bg-linear-to-r from-indigo-600 to-indigo-500 text-white shadow-lg shadow-indigo-500/25' : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'}`}
-			>
-				<HomeIcon class={`h-5 w-5 shrink-0 transition-colors ${page.url.pathname === '/' ? 'text-white' : 'text-slate-400 group-hover:text-indigo-400'}`} />
-				<span>Home</span>
-			</a>
-
-			<p class="mb-2 mt-4 px-3 text-[11px] font-semibold uppercase tracking-widest text-slate-500">Main Menu</p>
-
-			<!-- Lectures -->
-			<details class="group" open={lecturesToggle}>
-				<summary
-					onclick={(e) => {
-						e.preventDefault(); // stop native <details> toggle
-						toggleLectures();
-					}}
-					class={`${page.url.pathname.startsWith('/lectures') ? 'bg-linear-to-r from-indigo-600 to-indigo-500 text-white shadow-lg shadow-indigo-500/25' : 'bg-transparent text-slate-300 hover:bg-slate-800/70 hover:text-white'} flex cursor-pointer list-none items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200`}
-				>
-					<BookOpen class={`h-5 w-5 shrink-0 transition-colors ${page.url.pathname.startsWith('/lectures') ? 'text-white' : 'text-slate-400 group-hover:text-indigo-400'}`} />
-					<span class="flex-1">Lectures</span>
-
-					<svg class="h-4 w-4 transform text-current opacity-60 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-					</svg>
-				</summary>
-
-				<div class="ml-5 mt-2 space-y-0.5 border-l border-slate-700/50 pl-4">
-					{#each weeks as week}
+		<nav aria-label="Main navigation" class="min-h-0 flex-1 overflow-y-auto px-3 py-2 md:py-6">
+			<ul class="flex flex-wrap gap-1 md:flex-col">
+				<li>
+					<a
+						href={resolve('/')}
+						aria-current={page.url.pathname === '/' ? 'page' : undefined}
+						class="flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm font-medium hover:bg-slate-800 hover:text-white aria-[current=page]:bg-indigo-600 aria-[current=page]:text-white md:px-3 md:py-2.5"
+					>
+						<HomeIcon class="hidden size-5 md:block" />
+						Home
+					</a>
+				</li>
+				{#each Object.values(modules) as module (module.href)}
+					<li>
 						<a
-							href={week.href}
-							class={`block rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ${
-								page.url.pathname === week.href
-									? '-ml-px border-l-2 border-indigo-400 bg-indigo-500/10 text-indigo-300'
-									: 'text-slate-400 hover:translate-x-1 hover:bg-slate-800/50 hover:text-slate-200'
-							}`}
+							href={resolve(module.href)}
+							aria-current={page.url.pathname === module.href ? 'page' : undefined}
+							class="flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm font-medium hover:bg-slate-800 hover:text-white data-[active=true]:bg-indigo-600 data-[active=true]:text-white md:px-3 md:py-2.5"
+							data-active={isWithin(module.href)}
 						>
-							{week.label}
+							<module.icon class="hidden size-5 md:block" />
+							{module.label}
 						</a>
-					{/each}
-				</div>
-			</details>
+					</li>
+				{/each}
+			</ul>
 
-			<!-- Other categories -->
-			{#each categories.slice(1) as cat}
-				<a
-					href={cat.href}
-					class={`group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200
-			${page.url.pathname.startsWith(cat.href) ? 'bg-linear-to-r from-indigo-600 to-indigo-500 text-white shadow-lg shadow-indigo-500/25' : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'}`}
-				>
-					<cat.icon class={`h-5 w-5 shrink-0 transition-colors ${page.url.pathname.startsWith(cat.href) ? 'text-white' : 'text-slate-400 group-hover:text-indigo-400'}`} />
-					{cat.label}
-				</a>
-			{/each}
+			<hr class="my-3 hidden border-slate-800 md:block" />
+
+			<ul aria-label="Module resources" class="hidden space-y-1 md:block">
+				{#snippet sddResources()}
+					{@render resourceLinks(sddLinks)}
+					{@render resourceDropdown('Lecture weeks', isWithin('/sdd/lectures'), sddLectureWeeks)}
+				{/snippet}
+				{#snippet sddLectureWeeks()}
+					{@render resourceLinks(weeks)}
+				{/snippet}
+				{#snippet dynamicWebResources()}
+					{@render resourceLinks(dynamicWebLinks)}
+					{@render resourceLinks(dynamicWebWeekLinks)}
+				{/snippet}
+				{#snippet sysnetResources()}
+					<li class="px-3 py-2 text-sm text-slate-400">{modules.sysnetSecurity.description}</li>
+				{/snippet}
+
+				{@render resourceDropdown(modules.sdd.label, isWithin(modules.sdd.href), sddResources)}
+				{@render resourceDropdown(modules.dynamicWeb.label, isWithin(modules.dynamicWeb.href), dynamicWebResources)}
+				{@render resourceDropdown(modules.sysnetSecurity.label, isWithin(modules.sysnetSecurity.href), sysnetResources)}
+			</ul>
+
+			{#if isWithin(modules.sdd.href)}
+				<ul aria-label="SDD resources" class="mt-2 flex flex-wrap gap-1 border-t border-slate-800 pt-2 md:hidden">
+					{@render resourceLinks(sddLinks)}
+				</ul>
+			{:else if isWithin(modules.dynamicWeb.href)}
+				<ul aria-label="Dynamic Web resources" class="mt-2 flex flex-wrap gap-1 border-t border-slate-800 pt-2 md:hidden">
+					{@render resourceLinks(dynamicWebLinks)}
+				</ul>
+			{/if}
 		</nav>
 
-		<!-- Footer -->
-		<div class="border-t border-slate-800/50 bg-slate-900/50 p-4 backdrop-blur-sm">
-			<div class="flex items-center gap-3 rounded-lg bg-slate-800/50 p-3">
-				<div class="bg-linear-to-br flex h-9 w-9 items-center justify-center rounded-full from-amber-400 to-orange-500 shadow-md">
-					<span class="text-xs font-bold text-white">WIP</span>
-				</div>
-				<div>
-					<p class="text-sm font-semibold text-white">Work in Progress</p>
-					<p class="text-xs text-slate-400">Updated {lastUpdated.toLocaleDateString()}</p>
-				</div>
-			</div>
+		<div class="hidden border-t border-slate-800/50 p-4 text-xs text-slate-400 md:block">
+			<p>Work in progress</p>
+			<p>Updated {lastUpdated.toLocaleDateString()}</p>
 		</div>
-	</aside>
+	</div>
+
 	{@render children()}
 </div>
