@@ -7,6 +7,7 @@
 	import { page } from '$app/state';
 	import type { Snippet } from 'svelte';
 	import { lastUpdated } from '$lib';
+	import { appliedAiLectureHref, appliedAiLectures } from '$lib/applied-ai';
 	import { dynamicWebLectureHref, dynamicWebLectures } from '$lib/dynamic-web';
 	import { modules } from '$lib/modules';
 
@@ -21,6 +22,7 @@
 	] as const;
 
 	const dynamicWebLinks = [{ href: '/dynamic-web/quizzes', label: 'Quizzes' }] as const;
+	const appliedAiLinks = [{ href: '/applied-ai/quizzes', label: 'Quizzes' }] as const;
 
 	const weeks = [
 		'Introduction',
@@ -40,6 +42,11 @@
 
 	const dynamicWebWeekLinks = dynamicWebLectures.map(({ week, title }) => ({
 		href: dynamicWebLectureHref(week),
+		label: `Week ${week}: ${title}`
+	}));
+
+	const appliedAiWeekLinks = appliedAiLectures.map(({ week, title }) => ({
+		href: appliedAiLectureHref(week),
 		label: `Week ${week}: ${title}`
 	}));
 
@@ -131,12 +138,17 @@
 					{@render resourceLinks(dynamicWebLinks)}
 					{@render resourceLinks(dynamicWebWeekLinks)}
 				{/snippet}
+				{#snippet appliedAiResources()}
+					{@render resourceLinks(appliedAiLinks)}
+					{@render resourceLinks(appliedAiWeekLinks)}
+				{/snippet}
 				{#snippet sysnetResources()}
 					<li class="px-3 py-2 text-sm text-slate-400">{modules.sysnetSecurity.description}</li>
 				{/snippet}
 
 				{@render resourceDropdown(modules.sdd.label, isWithin(modules.sdd.href), sddResources)}
 				{@render resourceDropdown(modules.dynamicWeb.label, isWithin(modules.dynamicWeb.href), dynamicWebResources)}
+				{@render resourceDropdown(modules.appliedAi.label, isWithin(modules.appliedAi.href), appliedAiResources)}
 				{@render resourceDropdown(modules.sysnetSecurity.label, isWithin(modules.sysnetSecurity.href), sysnetResources)}
 			</ul>
 
@@ -147,6 +159,10 @@
 			{:else if isWithin(modules.dynamicWeb.href)}
 				<ul aria-label="Dynamic Web resources" class="mt-2 flex flex-wrap gap-1 border-t border-slate-800 pt-2 md:hidden">
 					{@render resourceLinks(dynamicWebLinks)}
+				</ul>
+			{:else if isWithin(modules.appliedAi.href)}
+				<ul aria-label="Applied AI resources" class="mt-2 flex flex-wrap gap-1 border-t border-slate-800 pt-2 md:hidden">
+					{@render resourceLinks(appliedAiLinks)}
 				</ul>
 			{/if}
 		</nav>

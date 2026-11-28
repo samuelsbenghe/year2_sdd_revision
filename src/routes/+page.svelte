@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import Page from '$lib/components/Page.svelte';
 	import PageContent from '$lib/components/PageContent.svelte';
 	import Section from '$lib/components/Section.svelte';
@@ -9,7 +10,7 @@
 
 <svelte:head>
 	<title>University Revision</title>
-	<meta name="description" content="Revision resources for Software Development and Design, Dynamic Web, and SysNet Security." />
+	<meta name="description" content="Revision resources for Software Development and Design, Dynamic Web, Applied AI, and SysNet Security." />
 </svelte:head>
 
 <Page>
@@ -23,7 +24,7 @@
 			<ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 				{#each Object.values(modules) as module (module.href)}
 					<li>
-						<a href={module.href} class="group flex h-full flex-col gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-colors hover:border-indigo-300">
+						<a href={resolve(module.href)} class="group flex h-full flex-col gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-colors hover:border-indigo-300">
 							<span class="flex items-center justify-between">
 								<span class="grid size-11 place-items-center rounded-lg bg-indigo-100 text-indigo-600">
 									<module.icon class="size-5" />

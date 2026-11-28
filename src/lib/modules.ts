@@ -1,4 +1,4 @@
-import { BookOpen, CodeXml, ShieldCheck } from '@lucide/svelte';
+import { BookOpen, BrainCircuit, CodeXml, ShieldCheck } from '@lucide/svelte';
 
 export const modules = {
 	sdd: {
@@ -14,6 +14,13 @@ export const modules = {
 		title: 'Dynamic Web',
 		description: 'Weekly lectures, slides, and revision notes for Dynamic Web Applications.',
 		icon: CodeXml
+	},
+	appliedAi: {
+		href: '/applied-ai',
+		label: 'Applied AI',
+		title: 'Applied AI',
+		description: 'Weekly lecture slides, revision notes, and quizzes for Applied Artificial Intelligence.',
+		icon: BrainCircuit
 	},
 	sysnetSecurity: {
 		href: '/sysnet-security',
